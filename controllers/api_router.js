@@ -12,48 +12,54 @@ apiRouter.get('/', function(req, res){
   })
 })
 
-// //SHOW TRIP BY ID
-// tripsRouter.get('/:id', function(req,res){
-//   tripsQuery.all(function(docs){
-//     res.json(docs[req.params.id])
-//   })
-// })
+//SHOW TRIP BY ID
+apiRouter.get('/:id', function(req,res){
+  adventureQuery.all(function(docs){
+    res.json(docs[req.params.id])
+  })
+})
 
-// //UPDATE TRIP BY ID
-// tripsRouter.put('/:id', function(req,res){
-//   tripsQuery.update(req.params.id, req.body, function(docs){
-//     res.json(docs);
-//   })
-// })
+//UPDATE TRIP BY ID
+apiRouter.put('/:id', function(req,res){
+  adventureQuery.update(req.params.id, req.body, function(docs){
+    res.json(docs);
+  })
+})
 
-// //CREATE NEW TRIP
-// tripsRouter.post('/', function(req, res){
+//CREATE NEW TRIP
+apiRouter.post('/', function(req, res){
 
-// console.log('posting here ')
+console.log('posting here ')
 
-//   var newTrip = {
-//     country: req.body.country,
-//     visitByDate: req.body.visitByDate,
-//     places: [
-//     {location: req.body.location,
-//       landmarks: [req.body.landmarks],
-//       lat: req.body.lat,
-//       lng: req.body.lng}
-//       ]
-//     }
+var newTrip = {
+   name: res.body.name ,
+   origin_lat: res.body.origin_lat,
+   origin_lng: res.body.origin_lng,
+   destination_lat: res.body.destination_lat,
+   destination_lng: res.body.destination_lng,
+   mode: res.body.mode,
+   waypoint: [
+   {
+     wp_name:res.body.waypoint.wp_name,
+     wp_ref:res.body.waypoint.wp_ref,
+     wp_lng: res.body.waypoint.wp_lng,
+     wp_lat: res.body.waypoint.wp_lat
+   }
+   ]
+  }
 
-//     tripsQuery.add(newTrip, function(docs){
-//       res.json(docs)
-//     })
+    adventureQuery.add(newTrip, function(docs){
+      res.json(docs)
+    })
 
-//   })
+  })
 
-// //DELETE TRIP BY ID 
-// tripsRouter.delete('/:id', function(req,res){
+//DELETE TRIP BY ID 
+apiRouter.delete('/:id', function(req,res){
   
-//   tripsQuery.delete(req.params.id, function(docs){
-//     res.json(docs);
-//   })
-// })
+  adventureQuery.delete(req.params.id, function(docs){
+    res.json(docs);
+  })
+})
 
 module.exports = apiRouter;
