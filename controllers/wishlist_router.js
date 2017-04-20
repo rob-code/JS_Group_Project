@@ -5,7 +5,7 @@ var AdventureQuery = require('../db/adventure_query')
 var adventureQuery = new AdventureQuery('wishlist')
 
 
-//SHOW ALL
+//SHOW ALL - OK
 wishlistRouter.get('/', function(req, res){
   adventureQuery.all(function(docs){
     res.json(docs)
@@ -31,22 +31,23 @@ wishlistRouter.post('/', function(req, res){
 
 console.log('posting here ')
 
-  var newTrip = {
-     name: res.body.name ,
-     origin_lat: res.body.origin_lat,
-     origin_lng: res.body.origin_lng,
-     destination_lat: res.body.destination_lat,
-     destination_lng: res.body.destination_lng,
-     mode: res.body.mode,
-     waypoint: [
-     {
-       wp_name:res.body.waypoint.wp_name,
-       wp_ref:res.body.waypoint.wp_ref,
-       wp_lng: res.body.waypoint.wp_lng,
-       wp_lat: res.body.waypoint.wp_lat
-     }
-     ]
+ var newTrip = {
+    name: req.body.name,
+    origin_lat: req.body.origin_lat,
+    origin_lng: req.body.origin_lng,
+    destination_lat: req.body.destination_lat,
+    destination_lng: req.body.destination_lng,
+    mode: req.body.mode,
+    waypoint: [
+    {
+      wp_name:req.body.waypoint[0].wp_name,
+      wp_ref:req.body.waypoint[0].wp_ref,
+      wp_lng: req.body.waypoint[0].wp_lng,
+      wp_lat: req.body.waypoint[0].wp_lat
     }
+    ]
+   }
+
 
 
     adventureQuery.add(newTrip, function(docs){
