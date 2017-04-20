@@ -5,12 +5,12 @@ var AdventureQuery = require('../db/adventure_query')
 var adventureQuery = new AdventureQuery('wishlist')
 
 
-// //SHOW ALL
-// tripsRouter.get('/', function(req, res){
-//   tripsQuery.all(function(docs){
-//     res.json(docs)
-//   })
-// })
+//SHOW ALL
+wishlistRouter.get('/', function(req, res){
+  adventureQuery.all(function(docs){
+    res.json(docs)
+  })
+})
 
 // //SHOW TRIP BY ID
 // tripsRouter.get('/:id', function(req,res){

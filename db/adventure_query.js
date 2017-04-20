@@ -2,7 +2,7 @@ var MongoClient = require('mongodb').MongoClient
 var ObjectID = require('mongodb').ObjectID;
 
 var AdventureQuery = function(collectionName){
-  this.url = 'mongodb://localhost:27017/adventure'
+  this.url = 'mongodb://localhost:27017/adventures'
   this.collectionName = collectionName
 }
 
