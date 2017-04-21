@@ -31,6 +31,10 @@ wishlistRouter.post('/', function(req, res){
 
 console.log('posting here ')
 
+//** RB: If this gets tricky when posting from client
+//it also works if we build the trip object in the client side as in seeds.js
+//send that from the client and pass req.body into adventureQuery 
+
  var newTrip = {
     name: req.body.name,
     origin_lat: req.body.origin_lat,
