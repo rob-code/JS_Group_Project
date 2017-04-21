@@ -14,6 +14,7 @@ var app = function(){
   var filterViewElement = document.querySelector('#filter-view')
   var filterView = new FilterView(filterViewElement)
 
+
   adventureList.getData(function(adventures){
 
   listScrollerView.renderAdventures(adventures)

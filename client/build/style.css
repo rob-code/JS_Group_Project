@@ -8,6 +8,7 @@
   text-align: center;
   padding-top: 10px;
   padding-bottom:10px;
+
 }
 
 #header-view-container{
@@ -20,6 +21,7 @@ height:40px;
 
 }
 
+/**************** styles for 3 column flex container ***************/
 
 
 #flex-container{
@@ -32,7 +34,6 @@ height:40px;
 
 #filter-view-container{
   width: 20%;
-  background-color: springgreen;
 }
 
 #list-view-container{
@@ -44,18 +45,12 @@ height:40px;
   border: solid .25px grey;
 }
 
-#filter-view{
-/*width:20%;*/
-background-color: springgreen;
-height:auto;
 
-}
+/**************** styles for list_scroller_view ***************/
 
 #list-view{
 height:auto;
 }
-
-/**************** styles for list_scroller_view ***************/
 
 .adventure-list-title{
  padding-top: 10px;
@@ -82,5 +77,16 @@ height:auto;
 }
 
 /**************** styles for filter_view ***************/
+
+#filter-view{
+width:100%;
+height:auto;
+}
+
+.filter-title{
+  padding-top: 10px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
 
 

@@ -2,6 +2,7 @@ var FilterView = function(filterElement){
 
   this.filterElement = filterElement;
 
+  this.render();
 }
 
 
