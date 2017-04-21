@@ -12,9 +12,7 @@ var app = function(){
 
   adventureList.getData(function(adventures){
 
-  console.log('we are here')
   listScrollerView.renderAdventures(adventures)
-
 
   })
 
