@@ -9,12 +9,10 @@ ListScrollerView.prototype = {
 
   renderAdventures: function(adventures){
 
-
     var title = document.createElement('div')
     title.innerHTML = "Adventure List";
     title.className = "adventure-list-title";
     this.scrollerElement.appendChild(title)
-
 
     adventures.forEach(function(adventure){
 
@@ -32,8 +30,6 @@ ListScrollerView.prototype = {
       this.scrollerElement.appendChild(wrapper)
       wrapper.appendChild(name)
       wrapper.appendChild(routeMode)
-
-
  
     }.bind(this))
 

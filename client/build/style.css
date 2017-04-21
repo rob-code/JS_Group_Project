@@ -3,16 +3,24 @@
   font-size:14px;
 }
 
+#hero-banner{
+  font-size:2.0em;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom:10px;
+}
+
 #header-view-container{
 background-color: grey;
 width:100%;
 height:40px;
-
 }
 
 #header-view{
 
 }
+
+
 
 #flex-container{
   display: flex;
@@ -47,8 +55,7 @@ height:auto;
 height:auto;
 }
 
-/*
-*************** styles for list_scroller_view ***************/
+/**************** styles for list_scroller_view ***************/
 
 .adventure-list-title{
  padding-top: 10px;
@@ -73,5 +80,7 @@ height:auto;
   font-size: 1.0em;
   font-weight: normal;
 }
+
+/**************** styles for filter_view ***************/
 
 
