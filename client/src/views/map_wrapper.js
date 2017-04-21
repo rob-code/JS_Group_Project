@@ -13,7 +13,7 @@ var MapWrapper = function(container, coords, zoom){
            map: this.googleMap,
            panel: document.getElementById('right-panel')
          });
-
+  console.log(this.googleMap)
          directionsDisplay.addListener('directions_changed', function() {
            computeTotalDistance(directionsDisplay.getDirections());
          });
@@ -33,7 +33,7 @@ MapWrapper.prototype = {
     })
 
 
-
+//    currentDirections.routes[0].legs[0].via_waypoint[]. 
 
     // var infowindow = new google.maps.InfoWindow({
     //   content: text

@@ -1,10 +1,10 @@
 * {
   font-family: helvetica;
-/*  border: solid 1px black;*/
+  font-size:14px;
 }
 
 #header-view-container{
-background-color: hotpink;
+background-color: grey;
 width:100%;
 height:40px;
 
@@ -22,24 +22,56 @@ height:40px;
 }
 
 
-
-#filter-view{
-width:20%;
-background-color: springgreen;
-height:auto;
+#filter-view-container{
+  width: 20%;
+  background-color: springgreen;
 }
 
-#list-view{
-width:40%;
-background-color: plum;
-height:auto;
+#list-view-container{
+ width: 39%; 
 }
 
 #map-view{
   width:40%;
-  background-color: peru;
-  height:auto;
+  border: solid .25px grey;
+}
 
+#filter-view{
+/*width:20%;*/
+background-color: springgreen;
+height:auto;
+
+}
+
+#list-view{
+height:auto;
+}
+
+/*
+*************** styles for list_scroller_view ***************/
+
+.adventure-list-title{
+ padding-top: 10px;
+ font-size: 1.5em;
+ font-weight: bold;
+ border-bottom: solid .25px grey;
+}
+
+.adventure-wrapper{
+  border-bottom: solid .25px grey;
+}
+
+.adventure-name{
+  padding-top: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.adventure-mode{
+  padding-top: 5px;
+  padding-bottom: 10px;
+  font-size: 1.0em;
+  font-weight: normal;
 }
 
 
