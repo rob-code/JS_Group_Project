@@ -2,14 +2,19 @@ var MapWrapper = require('./views/map_wrapper.js');
 var ListScrollerView = require('./views/list_scroller_view')
 var List = require('./models/list.js');
 var FilterView = require('./views/filter_view')
+var HeaderView = require('./views/header_view')
 
 
 
 var app = function(){
 
   var adventureList = new List('http://localhost:3000/api/adventures')
+
   var adventureListElement = document.querySelector('#list-view')
   var listScrollerView = new ListScrollerView(adventureListElement)
+
+  var headerViewElement = document.querySelector('#header-view')
+  var headerView = new HeaderView(headerViewElement)
 
   var filterViewElement = document.querySelector('#filter-view')
   var filterView = new FilterView(filterViewElement)

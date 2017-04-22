@@ -11,7 +11,7 @@ FilterView.prototype = {
 render: function(){
 
   var title = document.createElement('div')
-  title.innerHTML = "Filters ";
+  title.innerHTML = "Search ";
   title.className = "filter-title";
   this.filterElement.appendChild(title)
 
