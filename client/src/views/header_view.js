@@ -1,6 +1,8 @@
 var HeaderView = function(headerElement){
 
   this.headerElement = headerElement
+  this.adventureItem = null
+  this.wishlistItem = null
   this.render()
 }
 
@@ -15,27 +17,28 @@ HeaderView.prototype = {
     headerViewSeparator1.className = "header-view-item"
     headerViewSeparator1.innerHTML = " | "
 
-
-    var adventureItem = document.createElement('div')
-    adventureItem.className = "header-view-item"
-    adventureItem.innerHTML = "all adventures"
+    this.adventureItem = document.createElement('div')
+    this.adventureItem.className = "header-view-item"
+    this.adventureItem.innerHTML = "all Adventures"
+    this.adventureItem.style = "cursor: pointer"
 
     var headerViewSeparator2 = document.createElement('div')
     headerViewSeparator2.className = "header-view-item"
     headerViewSeparator2.innerHTML = " | "
 
-    var wishlistItem = document.createElement('div')
-    wishlistItem.className = "header-view-item" 
-    wishlistItem.innerHTML = "myAdventures"
+    this.wishlistItem = document.createElement('div')
+    this.wishlistItem.className = "header-view-item" 
+    this.wishlistItem.innerHTML = "my Adventures"
+    this.wishlistItem.style = "cursor: pointer"
 
     var headerViewSeparator3 = document.createElement('div')
     headerViewSeparator3.className = "header-view-item"
     headerViewSeparator3.innerHTML = " | "
 
     headerWrapper.appendChild(headerViewSeparator1);
-    headerWrapper.appendChild(adventureItem);
+    headerWrapper.appendChild(this.adventureItem);
     headerWrapper.appendChild(headerViewSeparator2);
-    headerWrapper.appendChild(wishlistItem);
+    headerWrapper.appendChild(this.wishlistItem);
     headerWrapper.appendChild(headerViewSeparator3);
 
     this.headerElement.appendChild(headerWrapper);

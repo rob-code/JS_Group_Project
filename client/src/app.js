@@ -20,9 +20,22 @@ var app = function(){
   var filterView = new FilterView(filterViewElement)
 
 
+
+
+
+
   adventureList.getData(function(adventures){
 
-  listScrollerView.renderAdventures(adventures)
+    listScrollerView.renderAdventures(adventures)
+
+  headerView.adventureItem.addEventListener('click', function(){
+    console.log('all adventures clicked')
+  })
+
+  headerView.wishlistItem.addEventListener('click', function(){
+    console.log('my adventures clicked')
+  })
+
 
   })
 
