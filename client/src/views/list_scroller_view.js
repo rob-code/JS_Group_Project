@@ -1,6 +1,6 @@
-var ListScrollerView = function(scrollerElement){
+var ListScrollerView = function(listElement){
 
-  this.scrollerElement = scrollerElement;
+  this.listElement = listElement;
 
 }
 
@@ -12,7 +12,11 @@ ListScrollerView.prototype = {
     var title = document.createElement('div')
     title.innerHTML = "Adventure List";
     title.className = "adventure-list-title";
-    this.scrollerElement.appendChild(title)
+    this.listElement.appendChild(title)
+
+    var scrollableContainer = document.createElement('div')
+    scrollableContainer.className = "adventure-scrollable-container";
+    this.listElement.appendChild(scrollableContainer)
 
     adventures.forEach(function(adventure){
 
@@ -23,12 +27,17 @@ ListScrollerView.prototype = {
       name.innerHTML = adventure.name;
       name.className = "adventure-name";
 
+      var location = document.createElement('div')
+      location.innerHTML = "Start at : " + adventure.location;
+      location.className = "adventure-location";
+
       var routeMode = document.createElement('div')
       routeMode.innerHTML = "Route Mode : " + adventure.mode;
       routeMode.className = "adventure-mode";
 
-      this.scrollerElement.appendChild(wrapper)
+      scrollableContainer.appendChild(wrapper)
       wrapper.appendChild(name)
+      wrapper.appendChild(location)
       wrapper.appendChild(routeMode)
  
     }.bind(this))

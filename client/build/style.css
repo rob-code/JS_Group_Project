@@ -44,6 +44,7 @@ height:40px;
 
 #filter-view-container{
   width: 20%;
+  background-color: #F5F5F5;
 }
 
 #list-view-container{
@@ -59,7 +60,8 @@ height:40px;
 /**************** styles for list_scroller_view ***************/
 
 #list-view{
-height:auto;
+  height:398px;
+  width:100%;
 }
 
 .adventure-list-title{
@@ -75,14 +77,27 @@ height:auto;
   border-bottom: solid .25px grey;
 }
 
+.adventure-scrollable-container{
+  overflow-y:scroll;
+  height:360px;
+  width:100%;
+  border-bottom: solid .25px grey;
+}
+
 .adventure-name{
   padding-top: 10px;
   font-size: 1.2em;
   font-weight: bold;
 }
 
-.adventure-mode{
+.adventure-location{
   padding-top: 5px;
+/*  padding-bottom: 10px;*/
+  font-size: 1.0em;
+  font-weight: normal;
+}
+
+.adventure-mode{
   padding-bottom: 10px;
   font-size: 1.0em;
   font-weight: normal;
