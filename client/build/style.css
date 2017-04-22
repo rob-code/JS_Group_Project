@@ -1,6 +1,14 @@
 * {
-  font-family: helvetica;
-  font-size:14px;
+
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  src: 'https://fonts.googleapis.com/css?family=Roboto:300';
+  
+
+
+  /*font-family: helvetica;
+  font-size:14px;*/
 }
 
 #hero-banner{
@@ -8,6 +16,8 @@
   text-align: center;
   padding-top: 10px;
   padding-bottom:10px;
+  color: lightseagreen;
+  opacity: .8;
 
 }
 
@@ -55,7 +65,9 @@ height:auto;
 .adventure-list-title{
  padding-top: 10px;
  font-size: 1.5em;
- font-weight: bold;
+ font-weight: normal;
+ color: lightseagreen;
+ opacity: .8;
  border-bottom: solid .25px grey;
 }
 
@@ -86,7 +98,9 @@ height:auto;
 .filter-title{
   padding-top: 10px;
   font-size: 1.5em;
-  font-weight: bold;
+  font-weight: normal;
+  color: lightseagreen;
+  opacity: .8;
 }
 
 
