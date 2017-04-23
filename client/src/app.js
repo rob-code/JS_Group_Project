@@ -4,8 +4,6 @@ var List = require('./models/list.js');
 var FilterView = require('./views/filter_view')
 var HeaderView = require('./views/header_view')
 
-
-
 var app = function(){
 
   //load header_view
@@ -48,20 +46,8 @@ var app = function(){
      })
   })
 
-
-
    var defaultListEvent = new Event('click');
    headerView.adventureItem.dispatchEvent(defaultListEvent);
-
-
-   // var defaultListEvent = new Event('click');
-   // headerView.wishlistItem.dispatchEvent(defaultListEvent);
-
-
-
-
-
-
 
 }
 
