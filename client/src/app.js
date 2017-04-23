@@ -28,6 +28,8 @@ var app = function(){
   var adventureList = new List('http://localhost:3000/api/adventures')
   var wishList = new List('http://localhost:3000/api/wishlist')
 
+
+  //these eventlisteners toggle which scrollable list to display 
   headerView.adventureItem.addEventListener('click', function(){
     adventureList.getData(function(adventures){
       listScrollerView.renderAdventures(adventures)
@@ -42,8 +44,9 @@ var app = function(){
      })
   })
 
-   var defaultListEvent = new Event('click');
-   headerView.adventureItem.dispatchEvent(defaultListEvent);
+  //list view on startup is all the adventures 
+  var defaultListEvent = new Event('click');
+  headerView.adventureItem.dispatchEvent(defaultListEvent);
 
 }
 
