@@ -33,6 +33,7 @@ console.log(res.responseText, req.responseText)
 
 var newTrip = {
    name: req.body.name,
+   location: req.body.location,
    origin_lat: req.body.origin_lat,
    origin_lng: req.body.origin_lng,
    destination_lat: req.body.destination_lat,

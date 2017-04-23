@@ -1,18 +1,51 @@
 * {
-  font-family: helvetica;
-/*  border: solid 1px black;*/
+
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  src: 'https://fonts.googleapis.com/css?family=Roboto:300';
+
+  /*font-family: helvetica;
+  font-size:14px;*/
 }
 
-#header-view-container{
-background-color: hotpink;
-width:100%;
-height:40px;
+#hero-banner{
+  font-size:2.0em;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom:10px;
+  color: lightseagreen;
+  opacity: .8;
+}
 
+/**************** styles for header view  ***************/
+
+#header-view-container{
+  background-color: #F5F5F5;
+  width:100%;
+  padding-top: 10px;
+  padding-bottom:10px;
 }
 
 #header-view{
-
+  text-align: center;
+  color: lightseagreen;
+  opacity: .8;
+  font-size: 1.5em;
 }
+
+.header-wrapper{
+  display: inline-block;
+}
+
+.header-view-item{
+  display: inline;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/**************** styles for 3 column flex container ***************/
+
 
 #flex-container{
   display: flex;
@@ -22,24 +55,127 @@ height:40px;
 }
 
 
-
-#filter-view{
-width:20%;
-background-color: springgreen;
-height:auto;
+#filter-view-container{
+  width: 15%;
+  background-color: #F5F5F5;
 }
 
-#list-view{
-width:40%;
-background-color: plum;
-height:auto;
+#list-view-container{
+ width: 39.5%; 
 }
 
 #map-view{
-  width:40%;
-  background-color: peru;
-  height:auto;
+  width:45%;
+  border: solid .25px grey;
+}
 
+/**************** styles for filter_view ***************/
+
+#filter-view{
+  width:100%;
+  height:auto;
+}
+
+.filter-title{
+  padding-top: 10px;
+  font-size: 1.5em;
+  font-weight: normal;
+  color: lightseagreen;
+  opacity: .8;
+}
+
+.filter-input{
+  display: inline-block;
+}
+/*.filter-label{
+  display: inline-block;
+  }*/
+
+  .filter-field-set{
+    border: none;
+    padding-left: 2%;
+    padding-right: 5%;
+    margin: 0px;
+  }
+
+  .filter-form-row{
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  .filter-label{
+    padding-left: 0px;
+    padding-right: 5px;
+    font-size: .9em
+  }
+
+  .filter-input{
+    float: right;
+  }
+
+  .filter-form-row-textfield{
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+
+  .filter-label-textfield{
+    padding-left: 0px;
+    padding-right: 5px;
+    font-size: .9em
+  }
+
+  .filter-input-textfield{
+    float: right;
+    width:95%;
+  }
+
+
+
+
+  /**************** styles for list_scroller_view ***************/
+
+  #list-view{
+    height:398px;
+    width:100%;
+  }
+
+  .adventure-list-title{
+   padding-top: 10px;
+   font-size: 1.5em;
+   font-weight: normal;
+   color: lightseagreen;
+   opacity: .8;
+   border-bottom: solid .25px grey;
+ }
+
+ .adventure-wrapper{
+  border-bottom: solid .25px grey;
+}
+
+.adventure-scrollable-container{
+  overflow-y:scroll;
+  height:360px;
+  width:100%;
+  border-bottom: solid .25px grey;
+}
+
+.adventure-name{
+  padding-top: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.adventure-location{
+  padding-top: 5px;
+  /*  padding-bottom: 10px;*/
+  font-size: 1.0em;
+  font-weight: normal;
+}
+
+.adventure-mode{
+  padding-bottom: 10px;
+  font-size: 1.0em;
+  font-weight: normal;
 }
 
 
