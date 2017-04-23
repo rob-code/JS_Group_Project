@@ -1,72 +1,83 @@
 var MapWrapper = function(container, coords, zoom){
 
- this.googleMap = new google.maps.Map(container, {center: coords,zoom: zoom});
- this.directionsService = new google.maps.DirectionsService;
- this.directionsDisplay = new google.maps.DirectionsRenderer({ draggable: true, map: this.googleMap});
-}
- 
+  this.googleMap = new google.maps.Map(container, {
+    center: coords,
+    zoom: zoom
+  })
+
+
+
+  var directionsService = new google.maps.DirectionsService;
+  var directionsDisplay = new google.maps.DirectionsRenderer({
+           draggable: true,
+           map: this.googleMap,
+           panel: document.getElementById('right-panel')
+         });
+
+         directionsDisplay.addListener('directions_changed', function() {
+           computeTotalDistance(directionsDisplay.getDirections());
+         });
+
+         this.displayRoute('Perth, WA', 'Sydney, NSW', directionsService,
+            directionsDisplay);
+  }
+
+
 
 MapWrapper.prototype = {
 
- showRoute1: function (origin, destination, service, display) {
+  addMarker: function(coords, text){
+    var marker = new google.maps.Marker({
+      position: coords,
+      map: this.googleMap
+    })
 
-   service.route({
-     origin: origin,
-     destination: destination,
-     waypoints: [],
-     travelMode: 'WALKING',
-     avoidTolls: true
-   }, function(response, status) {
-     if (status === 'OK') {
 
-       //// the route is displayed here
-       this.directionsDisplay.setDirections(response);
 
-       ///////////response is the same as the line under
-       //console.log(response.routes[0].legs[0]);
-       //console.log(this.directionsDisplay.directions.routes[0].legs[0]);
-       ///////////////////////////////////////////////////////
 
-      // console.log(routeData1.via_waypoints);
+    // var infowindow = new google.maps.InfoWindow({
+    //   content: text
+    // })
 
-       this.directionsDisplay.addListener('directions_changed', function(){
+    // marker.onLoad = infowindow.open(this.googleMap,marker)
 
-         console.log('directions changed');
-         console.log(this.directionsDisplay.directions.routes[0].legs[0]);
+    // marker.addListener('click', function(){
+    //   infowindow.open(this.googleMap,marker);
+    // })
+  },
 
-         //// create object from directions
-       var routeData = {};
-
-       var routeDirections = this.directionsDisplay.directions.routes[0].legs[0]
-
-       var routeWaypoints = [];
-
-       routeData.startpoint = {'lat': routeDirections.start_location.lat(), 'lng':routeDirections.start_location.lng()}
-
-       routeData.endpoint = {'lat': routeDirections.end_location.lat(), 'lng':routeDirections.end_location.lng()}
-
-       var viawp = routeDirections.via_waypoints
-       for(var i=0;i<viawp.length;i++){
-         routeWaypoints[i] = [viawp[i].lat(),viawp[i].lng()]
+  displayRoute: function (origin, destination, service, display) {
+         service.route({
+           origin: origin,
+           destination: destination,
+           waypoints: [{location: 'Adelaide, SA'}, {location: 'Broken Hill, NSW'}],
+           travelMode: 'WALKING',
+           avoidTolls: true
+         }, function(response, status) {
+           if (status === 'OK') {
+             display.setDirections(response);
+           } else {
+             alert('Could not display directions due to: ' + status);
+           }
+         });
        }
-       routeData.waypoints = routeWaypoints;
-           
-       var jsonString = JSON.stringify(routeData)
-       console.log(jsonString);
+
+       // function computeTotalDistance(result) {
+       //   var total = 0;
+       //   var myroute = result.routes[0];
+       //   for (var i = 0; i < myroute.legs.length; i++) {
+       //     total += myroute.legs[i].distance.value;
+       //   }
+       //   total = total / 1000;
+       //   document.getElementById('total').innerHTML = total + ' km';
+       // }
 
 
-       }.bind(this))
-
-
-     } else {
-       alert('Could not display directions due to: ' + status);
-     }
-   }.bind(this));
-         
-
- }
 
 };
 
 
 module.exports = MapWrapper;
+
+
+
