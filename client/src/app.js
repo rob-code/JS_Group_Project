@@ -23,8 +23,11 @@ var app = function(){
   var zoom = 10;
   var map = new MapWrapper(container, coords, zoom);
 
+       
+  }
 
-}
+      
+
 
 
 window.onload = app;
