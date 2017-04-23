@@ -29,20 +29,16 @@ var app = function(){
   var wishList = new List('http://localhost:3000/api/wishlist')
 
   headerView.adventureItem.addEventListener('click', function(){
-    console.log('all adventures clicked')
-    
     adventureList.getData(function(adventures){
       listScrollerView.renderAdventures(adventures)
-      //console.log(listElement.childNodes)
+    
     })
   })
 
    headerView.wishlistItem.addEventListener('click', function(){
-     console.log('wishlist clicked')
-
      wishList.getData(function(adventures){
-       listScrollerView.renderAdventures(adventures)
-       //console.log(listElement.childNodes)
+       listScrollerView.renderWishlist(adventures)
+      
      })
   })
 
