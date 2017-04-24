@@ -48,10 +48,24 @@ var app = function(){
   var wishList = new List('http://localhost:3000/api/wishlist')
 
 
+
   //these eventlisteners toggle which scrollable list to display 
   headerView.adventureItem.addEventListener('click', function(){
     adventureList.getData(function(adventures){
-      listScrollerView.renderAdventures(adventures)
+      listScrollerView.renderAdventures(adventures, function(adventure){
+        console.log(adventure.name)
+
+
+        var origin = new google.maps.LatLng(adventure.startpoint.lat,adventure.startpoint.lng);
+
+        var destination = new google.maps.LatLng(adventure.endpoint.lat,adventure.endpoint.lng);
+
+        var wp = [];
+            for(var i=0;i<adventure.waypoints.length;i++)
+                wp[i] = {'location': new google.maps.LatLng(adventure.waypoints[i][0], adventure.waypoints[i][1]),'stopover':false }
+
+        map.showRoute1(origin, destination, wp, map.directionsService, map.directionsDisplay)
+      })
     
     })
   })

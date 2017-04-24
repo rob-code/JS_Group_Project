@@ -194,3 +194,11 @@
   font-style: italic;
 }
 
+.adventure-show-route{
+  font-size: 0.8em;
+  font-weight: normal;
+  font-style: italic;
+  color: lightseagreen;
+  opacity: .8;
+}
+

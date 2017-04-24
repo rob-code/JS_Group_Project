@@ -4,7 +4,7 @@ var ListScrollerView = function(listElement){
 
 ListScrollerView.prototype = {
 
-  renderAdventures: function(adventures){
+  renderAdventures: function(adventures, callback){
 
     this.clearNodes()
 
@@ -38,15 +38,27 @@ ListScrollerView.prototype = {
       review.innerHTML = adventure.review;
       review.className = "adventure-review";
 
+      var showRoute = document.createElement('div')
+      showRoute.innerHTML = "show route";
+      showRoute.className = "adventure-show-route";
+
+      showRoute.style = "cursor: pointer"
+      showRoute.addEventListener('click', function(){
+
+        callback(adventure)
+
+
+      }.bind(this))
+
       scrollableContainer.appendChild(wrapper)
       wrapper.appendChild(name)
       wrapper.appendChild(description)
       wrapper.appendChild(routeModeRating)
       wrapper.appendChild(review)
+      wrapper.appendChild(showRoute)
  
     }.bind(this))
   },
-
 
 renderWishlist: function(adventures){
 
@@ -82,11 +94,16 @@ renderWishlist: function(adventures){
     review.innerHTML = adventure.review;
     review.className = "adventure-review";
 
+    var showRoute = document.createElement('div')
+    showRoute.innerHTML = "show route";
+    showRoute.className = "adventure-show-route";
+
     scrollableContainer.appendChild(wrapper)
     wrapper.appendChild(name)
     wrapper.appendChild(description)
     wrapper.appendChild(routeModeRating)
     wrapper.appendChild(review)
+    wrapper.appendChild(showRoute)
 
   }.bind(this))
 },

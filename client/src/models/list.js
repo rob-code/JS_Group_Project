@@ -14,7 +14,6 @@ List.prototype = {
         if (request.status === 200){
             var jsonString = request.responseText; 
             this.itemList = JSON.parse(jsonString);
-            console.log(this.itemList)
             callback(this.itemList);
           }
         }.bind(this); 
