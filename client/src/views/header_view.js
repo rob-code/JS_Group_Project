@@ -3,6 +3,7 @@ var HeaderView = function(headerElement){
   this.headerElement = headerElement
   this.adventureItem = null
   this.wishlistItem = null
+  this.cyoItem = null
   this.render()
 }
 
@@ -35,11 +36,22 @@ HeaderView.prototype = {
     headerViewSeparator3.className = "header-view-item"
     headerViewSeparator3.innerHTML = " | "
 
+    this.cyoItem = document.createElement('div')
+    this.cyoItem.className = "header-view-item" 
+    this.cyoItem.innerHTML = "create Your Own"
+    this.cyoItem.style = "cursor: pointer"
+
+    var headerViewSeparator4 = document.createElement('div')
+    headerViewSeparator4.className = "header-view-item"
+    headerViewSeparator4.innerHTML = " | "
+
     headerWrapper.appendChild(headerViewSeparator1);
     headerWrapper.appendChild(this.adventureItem);
     headerWrapper.appendChild(headerViewSeparator2);
     headerWrapper.appendChild(this.wishlistItem);
     headerWrapper.appendChild(headerViewSeparator3);
+    headerWrapper.appendChild(this.cyoItem);
+    headerWrapper.appendChild(headerViewSeparator4);
 
     this.headerElement.appendChild(headerWrapper);
 

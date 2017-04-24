@@ -3,6 +3,7 @@ var ListScrollerView = require('./views/list_scroller_view')
 var List = require('./models/list.js');
 var FilterView = require('./views/filter_view')
 var HeaderView = require('./views/header_view')
+var CyoView = require('./views/create_your_own.js')
 
 var app = function(){
 
@@ -13,6 +14,8 @@ var app = function(){
   //load filter_view
   var filterViewElement = document.querySelector('#filter-view')
   var filterView = new FilterView(filterViewElement)
+
+  
   
   ///////////////////////////////////////////////////////
   //////////////////////////MAP/////////////////////////////
@@ -47,6 +50,8 @@ var app = function(){
   var adventureList = new List('http://localhost:3000/api/adventures')
   var wishList = new List('http://localhost:3000/api/wishlist')
 
+  var cyoView = new CyoView(listElement)
+
 
   //these eventlisteners toggle which scrollable list to display 
   headerView.adventureItem.addEventListener('click', function(){
@@ -63,15 +68,15 @@ var app = function(){
      })
   })
 
-  //
-  // headerView.CyoView.addEventListener('click', function(){
-  //      console.log('wishlist clicked')
+  
+  headerView.cyoItem.addEventListener('click', function(){
+       console.log('wishlist clicked')
 
        
-  //        CyoView.renderCYO()
-  //        //console.log(listElement.childNodes)
+         cyoView.renderCYO()
+         //console.log(listElement.childNodes)
        
-  // })
+  })
 
 
   //list view on startup is all the adventures 
