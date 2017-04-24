@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -98,8 +98,7 @@ List.prototype = {
 module.exports = List;
 
 /***/ },
-/* 1 */,
-/* 2 */
+/* 1 */
 /***/ function(module, exports) {
 
 var FilterView = function(filterElement){
@@ -239,7 +238,7 @@ render: function(){
 module.exports = FilterView
 
 /***/ },
-/* 3 */
+/* 2 */
 /***/ function(module, exports) {
 
 var HeaderView = function(headerElement){
@@ -296,7 +295,7 @@ HeaderView.prototype = {
 module.exports = HeaderView
 
 /***/ },
-/* 4 */
+/* 3 */
 /***/ function(module, exports) {
 
 var ListScrollerView = function(listElement){
@@ -400,7 +399,7 @@ module.exports = ListScrollerView
 
 
 /***/ },
-/* 5 */
+/* 4 */
 /***/ function(module, exports) {
 
 var MapWrapper = function(container, coords, zoom){
@@ -489,14 +488,14 @@ module.exports = MapWrapper;
 
 
 /***/ },
-/* 6 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-var MapWrapper = __webpack_require__(5);
-var ListScrollerView = __webpack_require__(4)
+var MapWrapper = __webpack_require__(4);
+var ListScrollerView = __webpack_require__(3)
 var List = __webpack_require__(0);
-var FilterView = __webpack_require__(2)
-var HeaderView = __webpack_require__(3)
+var FilterView = __webpack_require__(1)
+var HeaderView = __webpack_require__(2)
 
 
 
