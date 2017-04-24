@@ -3,6 +3,8 @@ var MapWrapper = function(container, coords, zoom){
   this.googleMap = new google.maps.Map(container, {center: coords,zoom: zoom});
   this.directionsService = new google.maps.DirectionsService;
   this.directionsDisplay = new google.maps.DirectionsRenderer({ draggable: true, map: this.googleMap});
+
+  
 }
 
 

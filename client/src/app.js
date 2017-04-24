@@ -25,7 +25,7 @@ var app = function(){
   var coords = {lat: 55.953252, lng: -3.188267};
   var zoom = 10;
   var map = new MapWrapper(container, coords, zoom);
-  //
+  // 
   var mockRoute = {"startpoint":{"lat":55.9423957,"lng":-3.20640149999997},"endpoint":{"lat":55.9608186,"lng":-3.199936799999932},"waypoints":[[55.9472594,-3.1973686000000043],[55.9539001,-3.185916300000031],[55.9569345,-3.201127700000029]]};
 
 
