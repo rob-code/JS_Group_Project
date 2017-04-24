@@ -4,6 +4,8 @@ var List = require('./models/list.js');
 var FilterView = require('./views/filter_view')
 var HeaderView = require('./views/header_view')
 
+
+
 var app = function(){
 
   //load header_view
@@ -28,25 +30,38 @@ var app = function(){
   var adventureList = new List('http://localhost:3000/api/adventures')
   var wishList = new List('http://localhost:3000/api/wishlist')
 
-
-  //these eventlisteners toggle which scrollable list to display 
   headerView.adventureItem.addEventListener('click', function(){
+    console.log('all adventures clicked')
+    
     adventureList.getData(function(adventures){
       listScrollerView.renderAdventures(adventures)
-    
+      //console.log(listElement.childNodes)
     })
   })
 
    headerView.wishlistItem.addEventListener('click', function(){
+     console.log('wishlist clicked')
+
      wishList.getData(function(adventures){
-       listScrollerView.renderWishlist(adventures)
-      
+       listScrollerView.renderAdventures(adventures)
+       //console.log(listElement.childNodes)
      })
   })
 
-  //list view on startup is all the adventures 
-  var defaultListEvent = new Event('click');
-  headerView.adventureItem.dispatchEvent(defaultListEvent);
+
+
+   var defaultListEvent = new Event('click');
+   headerView.adventureItem.dispatchEvent(defaultListEvent);
+
+
+   // var defaultListEvent = new Event('click');
+   // headerView.wishlistItem.dispatchEvent(defaultListEvent);
+
+
+
+
+
+
 
 }
 

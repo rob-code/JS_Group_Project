@@ -114,25 +114,6 @@ render: function(){
   fieldSet.appendChild(distanceRow)
 
 
-  //clear search button
-  var clearRow = document.createElement('div')
-  clearRow.className = "filter-form-row-clearbutton"
-
-  var clearButton = document.createElement('input') 
-  clearButton.type = "button";
-  clearButton.name = "clearButton"
-  clearButton.value = "clear search filters"
-  clearButton.innerHTML = "clear search"
-  clearButton.className = "filter-input-clearbutton"
-
-  clearRow.appendChild(clearButton)
-  fieldSet.appendChild(clearRow)
-
-
-
-
-
-
 
 
 
