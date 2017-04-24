@@ -6,10 +6,10 @@ ListScrollerView.prototype = {
 
   renderAdventures: function(adventures){
 
-    this.clearList()
+    this.clearNodes()
 
     var title = document.createElement('div')
-    title.innerHTML = "Adventure List";
+    title.innerHTML = "all Adventures";
     title.className = "adventure-list-title";
     this.listElement.appendChild(title)
 
@@ -45,11 +45,10 @@ ListScrollerView.prototype = {
 
 renderWishlist: function(adventures){
 
-  this.clearList();
+  this.clearNodes();
   
-
   var title = document.createElement('div')
-  title.innerHTML = "my wish list";
+  title.innerHTML = "my Adventures";
   title.className = "adventure-list-title";
   this.listElement.appendChild(title)
 
@@ -82,13 +81,10 @@ renderWishlist: function(adventures){
   }.bind(this))
 },
 
-clearList: function(){
-  while (this.listElement.hasChildNodes()){
-    this.listElement.removeChild(this.listElement.lastChild)
-  }
-
-console.log(this.listElement.childNodes)
-
+clearNodes: function(){
+  while (this.listElement.firstChild){
+    this.listElement.removeChild(this.listElement.firstChild)  
+  }  
 }
 
 }

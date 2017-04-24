@@ -129,7 +129,16 @@
     width:95%;
   }
 
+  .filter-form-row-clearbutton{
+    padding-top: 40px;
+    padding-bottom: 10px;
+    padding-left:3px;
+  }
 
+  .filter-input-clearbutton{
+    /*border: none*/
+    height: 60px;
+  }
 
 
   /**************** styles for list_scroller_view ***************/
