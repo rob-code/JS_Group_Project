@@ -1,251 +1,145 @@
-
 use adventures
 db.route_data.drop()
 db.route_data.insert([
-  {name: "paper round",
-    location: "Lochaber",
-    origin_lat: 90,
-    origin_lng: 90,
-    destination_lat: 91,
-    destination_lng: 91,
-    mode: "cycling",
-    waypoint: [
-    {
-      wp_name:"postbox",
-      wp_ref:1,
-      wp_lng: 92,
-      wp_lat: 90
-    }
-    ]
+  {name: "Princes Street",
+  description: "This is an easy walk",
+  startpoint:{"lat":55.9423957,"lng":-3.20640149999997},
+  endpoint:{"lat":55.9608186,"lng":-3.199936799999932},
+  waypoints:[[55.9472594,-3.1973686000000043],[55.9539001,-3.185916300000031],[55.9569345,-3.201127700000029]],
+  mode: "walking",
+  rating: 3,
+  review: "This is great"
   },
-  {name: "Milk round",
-  location: "Glencoe",
-    origin_lat: 95,
-    origin_lng: 96,
-    destination_lat: 97,
-    destination_lng: 98,
-    mode: "walking",
-    waypoint: [
-    {
-      wp_name:"frontdoor",
-      wp_ref:1,
-      wp_lng: 92,
-      wp_lat: 90
-    }
-    ]
+  {name: "George Street",
+  description: "This is a tricky walk",
+  startpoint:{"lat":55.9423957,"lng":-3.20640149999997},
+  endpoint:{"lat":55.9608186,"lng":-3.199936799999932},
+  waypoints:[[55.9472594,-3.1973686000000043],[55.9539001,-3.185916300000031],[55.9569345,-3.201127700000029]],
+  mode: "walking",
+  rating: 3,
+  review: "This is great"
   },
-  {name: "Merry go round",
-  location: "Achiltibuie",
-    origin_lat: 92,
-    origin_lng: 93,
-    destination_lat: 94,
-    destination_lng: 94,
-    mode: "walking",
-    waypoint: [
-    {
-      wp_name:"fair",
-      wp_ref:1,
-      wp_lng: 92,
-      wp_lat: 90
-    }
-    ]
+  {name: "West Highland Way",
+  description: "This is an easy walk",
+  startpoint:{"lat":55.9423957,"lng":-3.20640149999997},
+  endpoint:{"lat":55.9608186,"lng":-3.199936799999932},
+  waypoints:[[55.9472594,-3.1973686000000043],[55.9539001,-3.185916300000031],[55.9569345,-3.201127700000029]],
+  mode: "walking",
+  rating: 3,
+  review: "This is great"
   },
-  {name: "paper round",
-    location: "Lochaber",
-    origin_lat: 90,
-    origin_lng: 90,
-    destination_lat: 91,
-    destination_lng: 91,
-    mode: "cycling",
-    waypoint: [
-    {
-      wp_name:"postbox",
-      wp_ref:1,
-      wp_lng: 92,
-      wp_lat: 90
-    }
-    ]
+  {name: "Glentress",
+  description: "This is an easy walk",
+  startpoint:{"lat":55.9423957,"lng":-3.20640149999997},
+  endpoint:{"lat":55.9608186,"lng":-3.199936799999932},
+  waypoints:[[55.9472594,-3.1973686000000043],[55.9539001,-3.185916300000031],[55.9569345,-3.201127700000029]],
+  mode: "walking",
+  rating: 3,
+  review: "This is great"
   },
-  {name: "paper round",
-    location: "Lochaber",
-    origin_lat: 90,
-    origin_lng: 90,
-    destination_lat: 91,
-    destination_lng: 91,
-    mode: "cycling",
-    waypoint: [
-    {
-      wp_name:"postbox",
-      wp_ref:1,
-      wp_lng: 92,
-      wp_lat: 90
-    }
-    ]
+  {name: "Loch Lomond",
+  description: "This is an easy walk",
+  startpoint:{"lat":55.9423957,"lng":-3.20640149999997},
+  endpoint:{"lat":55.9608186,"lng":-3.199936799999932},
+  waypoints:[[55.9472594,-3.1973686000000043],[55.9539001,-3.185916300000031],[55.9569345,-3.201127700000029]],
+  mode: "walking",
+  rating: 3,
+  review: "This is great"
   },
-  {name: "paper round",
-    location: "Lochaber",
-    origin_lat: 90,
-    origin_lng: 90,
-    destination_lat: 91,
-    destination_lng: 91,
-    mode: "cycling",
-    waypoint: [
-    {
-      wp_name:"postbox",
-      wp_ref:1,
-      wp_lng: 92,
-      wp_lat: 90
-    }
-    ]
+  {name: "Wolftracks",
+  description: "This is an easy walk",
+  startpoint:{"lat":55.9423957,"lng":-3.20640149999997},
+  endpoint:{"lat":55.9608186,"lng":-3.199936799999932},
+  waypoints:[[55.9472594,-3.1973686000000043],[55.9539001,-3.185916300000031],[55.9569345,-3.201127700000029]],
+  mode: "walking",
+  rating: 3,
+  review: "This is great"
   },
-  {name: "paper round",
-    location: "Lochaber",
-    origin_lat: 90,
-    origin_lng: 90,
-    destination_lat: 91,
-    destination_lng: 91,
-    mode: "cycling",
-    waypoint: [
-    {
-      wp_name:"postbox",
-      wp_ref:1,
-      wp_lng: 92,
-      wp_lat: 90
-    }
-    ]
+  {name: "Aberdeen",
+  description: "This is an easy walk",
+  startpoint:{"lat":55.9423957,"lng":-3.20640149999997},
+  endpoint:{"lat":55.9608186,"lng":-3.199936799999932},
+  waypoints:[[55.9472594,-3.1973686000000043],[55.9539001,-3.185916300000031],[55.9569345,-3.201127700000029]],
+  mode: "walking",
+  rating: 3,
+  review: "This is great"
   },
-  {name: "paper round",
-    location: "Lochaber",
-    origin_lat: 90,
-    origin_lng: 90,
-    destination_lat: 91,
-    destination_lng: 91,
-    mode: "cycling",
-    waypoint: [
-    {
-      wp_name:"postbox",
-      wp_ref:1,
-      wp_lng: 92,
-      wp_lat: 90
-    }
-    ]
+  {name: "Lochaber",
+  description: "This is an easy walk",
+  startpoint:{"lat":55.9423957,"lng":-3.20640149999997},
+  endpoint:{"lat":55.9608186,"lng":-3.199936799999932},
+  waypoints:[[55.9472594,-3.1973686000000043],[55.9539001,-3.185916300000031],[55.9569345,-3.201127700000029]],
+  mode: "walking",
+  rating: 3,
+  review: "This is great"
   },
-  {name: "paper round",
-    location: "Lochaber",
-    origin_lat: 90,
-    origin_lng: 90,
-    destination_lat: 91,
-    destination_lng: 91,
-    mode: "cycling",
-    waypoint: [
-    {
-      wp_name:"postbox",
-      wp_ref:1,
-      wp_lng: 92,
-      wp_lat: 90
-    }
-    ]
+  {name: "Rocky Mountains",
+  description: "This is an easy walk",
+  startpoint:{"lat":55.9423957,"lng":-3.20640149999997},
+  endpoint:{"lat":55.9608186,"lng":-3.199936799999932},
+  waypoints:[[55.9472594,-3.1973686000000043],[55.9539001,-3.185916300000031],[55.9569345,-3.201127700000029]],
+  mode: "walking",
+  rating: 3,
+  review: "This is great"
   },
-  {name: "paper round",
-    location: "Lochaber",
-    origin_lat: 90,
-    origin_lng: 90,
-    destination_lat: 91,
-    destination_lng: 91,
-    mode: "cycling",
-    waypoint: [
-    {
-      wp_name:"postbox",
-      wp_ref:1,
-      wp_lng: 92,
-      wp_lat: 90
-    }
-    ]
+  {name: "Grand Canyon",
+  description: "This is an easy walk",
+  startpoint:{"lat":55.9423957,"lng":-3.20640149999997},
+  endpoint:{"lat":55.9608186,"lng":-3.199936799999932},
+  waypoints:[[55.9472594,-3.1973686000000043],[55.9539001,-3.185916300000031],[55.9569345,-3.201127700000029]],
+  mode: "walking",
+  rating: 3,
+  review: "This is great"
   },
-  {name: "paper round",
-    location: "Lochaber",
-    origin_lat: 90,
-    origin_lng: 90,
-    destination_lat: 91,
-    destination_lng: 91,
-    mode: "cycling",
-    waypoint: [
-    {
-      wp_name:"postbox",
-      wp_ref:1,
-      wp_lng: 92,
-      wp_lat: 90
-    }
-    ]
+  {name: "Ayers Rock",
+  description: "This is an easy walk",
+  startpoint:{"lat":55.9423957,"lng":-3.20640149999997},
+  endpoint:{"lat":55.9608186,"lng":-3.199936799999932},
+  waypoints:[[55.9472594,-3.1973686000000043],[55.9539001,-3.185916300000031],[55.9569345,-3.201127700000029]],
+  mode: "walking",
+  rating: 3,
+  review: "This is great"
   },
-  {name: "paper round",
-    location: "Lochaber",
-    origin_lat: 90,
-    origin_lng: 90,
-    destination_lat: 91,
-    destination_lng: 91,
-    mode: "cycling",
-    waypoint: [
-    {
-      wp_name:"postbox",
-      wp_ref:1,
-      wp_lng: 92,
-      wp_lat: 90
-    }
-    ]
+  {name: "Alics Springs",
+  description: "This is an easy walk",
+  startpoint:{"lat":55.9423957,"lng":-3.20640149999997},
+  endpoint:{"lat":55.9608186,"lng":-3.199936799999932},
+  waypoints:[[55.9472594,-3.1973686000000043],[55.9539001,-3.185916300000031],[55.9569345,-3.201127700000029]],
+  mode: "walking",
+  rating: 3,
+  review: "This is great"
   }
   ])
 
 db.wishlist.drop()
 db.wishlist.insert([
- {name: "wishlist paper round",
-     location: "Lochaber",
-     origin_lat: 90,
-     origin_lng: 90,
-     destination_lat: 91,
-     destination_lng: 91,
-     mode: "walking",
-     waypoint: [
-     {
-       wp_name:"postbox",
-       wp_ref:1,
-       wp_lng: 92,
-       wp_lat: 90
-     }
-     ]
-   },
-   {name: "wishlist Milk round",
-     location: "Glencoe",
-     origin_lat: 95,
-     origin_lng: 96,
-     destination_lat: 97,
-     destination_lng: 98,
-     mode: "cycling",
-     waypoint: [
-     {
-       wp_name:"frontdoor",
-       wp_ref:1,
-       wp_lng: 92,
-       wp_lat: 90
-     }
-     ]
-   },
-   {name: "wishlist Merry go round",
-     location: "Achiltibuie",
-     origin_lat: 92,
-     origin_lng: 93,
-     destination_lat: 94,
-     destination_lng: 94,
-     mode: "cycling",
-     waypoint: [
-     {
-       wp_name:"fair",
-       wp_ref:1,
-       wp_lng: 92,
-       wp_lat: 90
-     }
-     ]
-   }
+  {name: "Glencoe",
+  description: "This is an easy walk",
+  startpoint:{"lat":55.9423957,"lng":-3.20640149999997},
+  endpoint:{"lat":55.9608186,"lng":-3.199936799999932},
+  waypoints:[[55.9472594,-3.1973686000000043],[55.9539001,-3.185916300000031],[55.9569345,-3.201127700000029]],
+  mode: "walking",
+  rating: 3,
+  review: "This is great"
+  },
+  {name: "Braemar",
+  description: "This is an easy walk",
+  startpoint:{"lat":55.9423957,"lng":-3.20640149999997},
+  endpoint:{"lat":55.9608186,"lng":-3.199936799999932},
+  waypoints:[[55.9472594,-3.1973686000000043],[55.9539001,-3.185916300000031],[55.9569345,-3.201127700000029]],
+  mode: "walking",
+  rating: 3,
+  review: "This is great"
+  },
+  {name: "Glenshee",
+  description: "This is an easy walk",
+  startpoint:{"lat":55.9423957,"lng":-3.20640149999997},
+  endpoint:{"lat":55.9608186,"lng":-3.199936799999932},
+  waypoints:[[55.9472594,-3.1973686000000043],[55.9539001,-3.185916300000031],[55.9569345,-3.201127700000029]],
+  mode: "walking",
+  rating: 3,
+  review: "This is great"
+  }
 
   ])
 

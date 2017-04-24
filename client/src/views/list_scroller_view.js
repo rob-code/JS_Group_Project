@@ -26,18 +26,23 @@ ListScrollerView.prototype = {
       name.innerHTML = adventure.name;
       name.className = "adventure-name";
 
-      var location = document.createElement('div')
-      location.innerHTML = "Start at : " + adventure.location;
-      location.className = "adventure-location";
+      var description = document.createElement('div')
+      description.innerHTML = "Description : " + adventure.description;
+      description.className = "adventure-description";
 
-      var routeMode = document.createElement('div')
-      routeMode.innerHTML = "Route Mode : " + adventure.mode;
-      routeMode.className = "adventure-mode";
+      var routeModeRating = document.createElement('div')
+      routeModeRating.innerHTML = "Route Mode : " + adventure.mode + ".  Rating : " + adventure.rating;
+      routeModeRating.className = "adventure-mode-rating";
+
+      var review = document.createElement('div')
+      review.innerHTML = adventure.review;
+      review.className = "adventure-review";
 
       scrollableContainer.appendChild(wrapper)
       wrapper.appendChild(name)
-      wrapper.appendChild(location)
-      wrapper.appendChild(routeMode)
+      wrapper.appendChild(description)
+      wrapper.appendChild(routeModeRating)
+      wrapper.appendChild(review)
  
     }.bind(this))
   },
@@ -65,18 +70,23 @@ renderWishlist: function(adventures){
     name.innerHTML = adventure.name;
     name.className = "adventure-name";
 
-    var location = document.createElement('div')
-    location.innerHTML = "Start at : " + adventure.location;
-    location.className = "adventure-location";
+    var description = document.createElement('div')
+    description.innerHTML = "Description : " + adventure.description;
+    description.className = "adventure-description";
 
-    var routeMode = document.createElement('div')
-    routeMode.innerHTML = "Route Mode : " + adventure.mode;
-    routeMode.className = "adventure-mode";
+    var routeModeRating = document.createElement('div')
+    routeModeRating.innerHTML = "Route Mode : " + adventure.mode + ".  Rating : " + adventure.rating;
+    routeModeRating.className = "adventure-mode-rating";
+
+    var review = document.createElement('div')
+    review.innerHTML = adventure.review;
+    review.className = "adventure-review";
 
     scrollableContainer.appendChild(wrapper)
     wrapper.appendChild(name)
-    wrapper.appendChild(location)
-    wrapper.appendChild(routeMode)
+    wrapper.appendChild(description)
+    wrapper.appendChild(routeModeRating)
+    wrapper.appendChild(review)
 
   }.bind(this))
 },
