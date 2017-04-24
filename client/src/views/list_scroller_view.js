@@ -50,6 +50,8 @@ ListScrollerView.prototype = {
 
       }.bind(this))
 
+      
+
       scrollableContainer.appendChild(wrapper)
       wrapper.appendChild(name)
       wrapper.appendChild(description)

@@ -15,8 +15,6 @@ apiRouter.get('/', function(req, res){
 //SHOW TRIP BY ID - OK
 apiRouter.get('/:id', function(req,res){
   adventureQuery.getById(req.params.id,function(docs){
-    console.log(docs[0]);
-   // console.log(req.params.id)
     res.json(docs[0])
   })
 })
@@ -30,8 +28,6 @@ apiRouter.put('/:id', function(req,res){
 
 //CREATE NEW TRIP - OK 
 apiRouter.post('/', function(req, res){
-
-console.log(res.responseText, req.responseText)
 
 var newTrip = {
    name: req.body.name,

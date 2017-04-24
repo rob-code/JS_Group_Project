@@ -17,7 +17,7 @@ var app = function(){
   ///////////////////////////////////////////////////////
   //////////////////////////MAP/////////////////////////////
   ///////////////////////////////////////////////////////
-  var renderListRoute = function(adventure){
+  var renderListRoute = function(adventure,url){
     var origin = new google.maps.LatLng(adventure.startpoint.lat,adventure.startpoint.lng);
     var destination = new google.maps.LatLng(adventure.endpoint.lat,adventure.endpoint.lng);
     var wp = [];
@@ -26,7 +26,7 @@ var app = function(){
 
       console.log(adventure._id)
 
-    map.showRoute1(origin, destination, wp, map.directionsService, map.directionsDisplay,adventure._id)
+    map.showRoute1(origin, destination, wp, map.directionsService, map.directionsDisplay,adventure._id,url)
 
   }
   //load map
@@ -65,32 +65,26 @@ var app = function(){
   headerView.adventureItem.addEventListener('click', function(){
     adventureList.getData(function(adventures){
       listScrollerView.renderAdventures(adventures,function(adventure){
-
-       console.log(adventure._id);
-        adventureList.getDataById(adventure._id,function(item){
-
-
-          console.log("got data")
-         
-          renderListRoute(item);
-               
-
-
+          adventureList.getDataById(adventure._id,function(item){         
+          renderListRoute(item,'http://localhost:3000/api/adventures/' );
       });
 
       })
     
     })
-  })
+  });
+
 
    headerView.wishlistItem.addEventListener('click', function(){
      wishList.getData(function(adventures){
        listScrollerView.renderWishlist(adventures, function(adventure){
-        renderListRoute(adventure);
+            wishList.getDataById(adventure._id,function(item){         
+            renderListRoute(item,'http://localhost:3000/api/wishlist/');
+       });
       })
        
      })
-  })
+  });
 
   //
   // headerView.CyoView.addEventListener('click', function(){

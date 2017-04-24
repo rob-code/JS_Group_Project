@@ -24,7 +24,7 @@ MapWrapper.prototype = {
     // })
   },
 
-    showRoute1: function (origin, destination,waypoints, service, display, id) {
+    showRoute1: function (origin, destination,waypoints, service, display, id,url) {
 
       this.id = id
       
@@ -73,7 +73,7 @@ MapWrapper.prototype = {
           console.log(jsonString);
           /////////////////////////// Update route
              var request = new XMLHttpRequest();
-             request.open("PUT", "http://localhost:3000/api/adventures/" + this.id);
+             request.open("PUT", url + this.id);
 
              request.setRequestHeader("Content-Type", "application/json");
 
