@@ -64,14 +64,14 @@ var app = function(){
   })
 
   //
-  headerView.CyoView.addEventListener('click', function(){
-       console.log('wishlist clicked')
+  // headerView.CyoView.addEventListener('click', function(){
+  //      console.log('wishlist clicked')
 
        
-         CyoView.renderCYO()
-         //console.log(listElement.childNodes)
+  //        CyoView.renderCYO()
+  //        //console.log(listElement.childNodes)
        
-  })
+  // })
 
 
   //list view on startup is all the adventures 

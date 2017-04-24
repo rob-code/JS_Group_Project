@@ -33,20 +33,13 @@ console.log(res.responseText, req.responseText)
 
 var newTrip = {
    name: req.body.name,
-   location: req.body.location,
-   origin_lat: req.body.origin_lat,
-   origin_lng: req.body.origin_lng,
-   destination_lat: req.body.destination_lat,
-   destination_lng: req.body.destination_lng,
+   description: req.body.description,
+   startpoint: req.body.startpoint,
+   endpoint: req.body.endpoint,
+   waypoints: req.body.waypoints,
    mode: req.body.mode,
-   waypoint: [
-   {
-     wp_name:req.body.waypoint[0].wp_name,
-     wp_ref:req.body.waypoint[0].wp_ref,
-     wp_lng: req.body.waypoint[0].wp_lng,
-     wp_lat: req.body.waypoint[0].wp_lat
-   }
-   ]
+   rating: req.body.rating,
+   review: req.body.review
   }
 
     adventureQuery.add(newTrip, function(docs){
