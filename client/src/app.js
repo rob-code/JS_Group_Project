@@ -17,14 +17,16 @@ var app = function(){
   ///////////////////////////////////////////////////////
   //////////////////////////MAP/////////////////////////////
   ///////////////////////////////////////////////////////
-  var renderListRoute = function(mongoCoords){
-    var origin = new google.maps.LatLng(mongoCoords.startpoint.lat,mongoCoords.startpoint.lng);
-    var destination = new google.maps.LatLng(mongoCoords.endpoint.lat,mongoCoords.endpoint.lng);
+  var renderListRoute = function(adventure){
+    var origin = new google.maps.LatLng(adventure.startpoint.lat,adventure.startpoint.lng);
+    var destination = new google.maps.LatLng(adventure.endpoint.lat,adventure.endpoint.lng);
     var wp = [];
-        for(var i=0;i<mongoCoords.waypoints.length;i++)
-            wp[i] = {'location': new google.maps.LatLng(mongoCoords.waypoints[i][0], mongoCoords.waypoints[i][1]),'stopover':false }
+        for(var i=0;i<adventure.waypoints.length;i++)
+            wp[i] = {'location': new google.maps.LatLng(adventure.waypoints[i][0], adventure.waypoints[i][1]),'stopover':false }
 
-    map.showRoute1(origin, destination, wp, map.directionsService, map.directionsDisplay)
+      console.log(adventure._id)
+
+    map.showRoute1(origin, destination, wp, map.directionsService, map.directionsDisplay,adventure._id)
 
   }
   //load map
@@ -33,18 +35,18 @@ var app = function(){
   var zoom = 10;
   var map = new MapWrapper(container, coords, zoom);
   //
-  var mockRoute = {"startpoint":{"lat":55.9423957,"lng":-3.20640149999997},"endpoint":{"lat":55.9608186,"lng":-3.199936799999932},"waypoints":[[55.9472594,-3.1973686000000043],[55.9539001,-3.185916300000031],[55.9569345,-3.201127700000029]]};
+  // var mockRoute = {"startpoint":{"lat":55.9423957,"lng":-3.20640149999997},"endpoint":{"lat":55.9608186,"lng":-3.199936799999932},"waypoints":[[55.9472594,-3.1973686000000043],[55.9539001,-3.185916300000031],[55.9569345,-3.201127700000029]]};
 
 
-  var wp = [];
-      for(var i=0;i<mockRoute.waypoints.length;i++)
-          wp[i] = {'location': new google.maps.LatLng(mockRoute.waypoints[i][0], mockRoute.waypoints[i][1]),'stopover':false }
+  // var wp = [];
+  //     for(var i=0;i<mockRoute.waypoints.length;i++)
+  //         wp[i] = {'location': new google.maps.LatLng(mockRoute.waypoints[i][0], mockRoute.waypoints[i][1]),'stopover':false }
          
-  var ori = new google.maps.LatLng(mockRoute.startpoint.lat,mockRoute.startpoint.lng);
+  // var ori = new google.maps.LatLng(mockRoute.startpoint.lat,mockRoute.startpoint.lng);
 
-  var desti = new google.maps.LatLng(mockRoute.endpoint.lat,mockRoute.endpoint.lng);
+  // var desti = new google.maps.LatLng(mockRoute.endpoint.lat,mockRoute.endpoint.lng);
 
-  map.showRoute1(ori,desti,wp, map.directionsService, map.directionsDisplay )
+  // map.showRoute1(ori,desti,wp, map.directionsService, map.directionsDisplay )
 
   /////////////////////////////////////////////////////////
   ////////////////////MAP END/////////////////////
@@ -62,8 +64,20 @@ var app = function(){
   //these eventlisteners toggle which scrollable list to display 
   headerView.adventureItem.addEventListener('click', function(){
     adventureList.getData(function(adventures){
-      listScrollerView.renderAdventures(adventures, function(adventure){
-        renderListRoute(adventure);
+      listScrollerView.renderAdventures(adventures,function(adventure){
+
+       console.log(adventure._id);
+        adventureList.getDataById(adventure._id,function(item){
+
+
+          console.log("got data")
+         
+          renderListRoute(item);
+               
+
+
+      });
+
       })
     
     })

@@ -4,7 +4,7 @@ var ListScrollerView = function(listElement){
 
 ListScrollerView.prototype = {
 
-  renderAdventures: function(adventures, callback){
+  renderAdventures: function(adventures,callback){
 
     this.clearNodes()
 
@@ -44,7 +44,10 @@ ListScrollerView.prototype = {
 
       showRoute.style = "cursor: pointer"
       showRoute.addEventListener('click', function(){
+        ////refresh data  
+    
         callback(adventure)
+
       }.bind(this))
 
       scrollableContainer.appendChild(wrapper)

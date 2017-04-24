@@ -14,8 +14,10 @@ apiRouter.get('/', function(req, res){
 
 //SHOW TRIP BY ID - OK
 apiRouter.get('/:id', function(req,res){
-  adventureQuery.all(function(docs){
-    res.json(docs[req.params.id])
+  adventureQuery.getById(req.params.id,function(docs){
+    console.log(docs[0]);
+   // console.log(req.params.id)
+    res.json(docs[0])
   })
 })
 

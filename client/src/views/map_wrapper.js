@@ -24,8 +24,10 @@ MapWrapper.prototype = {
     // })
   },
 
-    showRoute1: function (origin, destination,waypoints, service, display) {
+    showRoute1: function (origin, destination,waypoints, service, display, id) {
 
+      this.id = id
+      
       service.route({
         origin: origin,
         destination: destination,
@@ -47,7 +49,7 @@ MapWrapper.prototype = {
 
           this.directionsDisplay.addListener("directions_changed", function(){
 
-            console.log("directions changed");
+            console.log("directions changed - xmlhttprequest");
             console.log(this.directionsDisplay.directions.routes[0].legs[0]);
 
             //// create object from directions
@@ -69,15 +71,18 @@ MapWrapper.prototype = {
                
           var jsonString = JSON.stringify(routeData)
           console.log(jsonString);
-          /////////////////////////// post
+          /////////////////////////// Update route
              var request = new XMLHttpRequest();
-             request.open("POST", "http://localhost:3000/api/adventures");
+             request.open("PUT", "http://localhost:3000/api/adventures/" + this.id);
+
              request.setRequestHeader("Content-Type", "application/json");
+
              request.onload = function(){console.log("sending");};
+
              request.send(jsonString);
            
 
-           //////post end
+           //////update end
 
           }.bind(this))
 
