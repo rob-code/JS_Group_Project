@@ -17,6 +17,16 @@ var app = function(){
   ///////////////////////////////////////////////////////
   //////////////////////////MAP/////////////////////////////
   ///////////////////////////////////////////////////////
+  var renderListRoute = function(mongoCoords){
+    var origin = new google.maps.LatLng(mongoCoords.startpoint.lat,mongoCoords.startpoint.lng);
+    var destination = new google.maps.LatLng(mongoCoords.endpoint.lat,mongoCoords.endpoint.lng);
+    var wp = [];
+        for(var i=0;i<mongoCoords.waypoints.length;i++)
+            wp[i] = {'location': new google.maps.LatLng(mongoCoords.waypoints[i][0], mongoCoords.waypoints[i][1]),'stopover':false }
+
+    map.showRoute1(origin, destination, wp, map.directionsService, map.directionsDisplay)
+
+  }
   //load map
   var container = document.getElementById('map-view');
   var coords = {lat: 55.953252, lng: -3.188267};
@@ -53,18 +63,7 @@ var app = function(){
   headerView.adventureItem.addEventListener('click', function(){
     adventureList.getData(function(adventures){
       listScrollerView.renderAdventures(adventures, function(adventure){
-        console.log(adventure.name)
-
-
-        var origin = new google.maps.LatLng(adventure.startpoint.lat,adventure.startpoint.lng);
-
-        var destination = new google.maps.LatLng(adventure.endpoint.lat,adventure.endpoint.lng);
-
-        var wp = [];
-            for(var i=0;i<adventure.waypoints.length;i++)
-                wp[i] = {'location': new google.maps.LatLng(adventure.waypoints[i][0], adventure.waypoints[i][1]),'stopover':false }
-
-        map.showRoute1(origin, destination, wp, map.directionsService, map.directionsDisplay)
+        renderListRoute(adventure);
       })
     
     })
@@ -72,8 +71,10 @@ var app = function(){
 
    headerView.wishlistItem.addEventListener('click', function(){
      wishList.getData(function(adventures){
-       listScrollerView.renderWishlist(adventures)
-      
+       listScrollerView.renderWishlist(adventures, function(adventure){
+        renderListRoute(adventure);
+      })
+       
      })
   })
 
@@ -96,3 +97,4 @@ var app = function(){
 
 
 window.onload = app;
+

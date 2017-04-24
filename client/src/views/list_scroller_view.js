@@ -44,10 +44,7 @@ ListScrollerView.prototype = {
 
       showRoute.style = "cursor: pointer"
       showRoute.addEventListener('click', function(){
-
         callback(adventure)
-
-
       }.bind(this))
 
       scrollableContainer.appendChild(wrapper)
@@ -60,7 +57,7 @@ ListScrollerView.prototype = {
     }.bind(this))
   },
 
-renderWishlist: function(adventures){
+renderWishlist: function(adventures, callback){
 
   this.clearNodes();
   
@@ -97,6 +94,11 @@ renderWishlist: function(adventures){
     var showRoute = document.createElement('div')
     showRoute.innerHTML = "show route";
     showRoute.className = "adventure-show-route";
+
+    showRoute.style = "cursor: pointer"
+    showRoute.addEventListener('click', function(){
+      callback(adventure)
+    }.bind(this))
 
     scrollableContainer.appendChild(wrapper)
     wrapper.appendChild(name)
