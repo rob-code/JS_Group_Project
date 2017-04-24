@@ -14,9 +14,9 @@ var MapWrapper = function(container, coords, zoom){
            panel: document.getElementById('right-panel')
          });
   console.log(this.googleMap)
-         directionsDisplay.addListener('directions_changed', function() {
-           computeTotalDistance(directionsDisplay.getDirections());
-         });
+         // directionsDisplay.addListener('directions_changed', function() {
+         //   computeTotalDistance(directionsDisplay.getDirections());
+         // });
 
          this.displayRoute('Perth, WA', 'Sydney, NSW', directionsService,
             directionsDisplay);

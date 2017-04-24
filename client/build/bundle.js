@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 6);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -98,8 +98,7 @@ List.prototype = {
 module.exports = List;
 
 /***/ },
-/* 1 */,
-/* 2 */
+/* 1 */
 /***/ function(module, exports) {
 
 var FilterView = function(filterElement){
@@ -239,7 +238,7 @@ render: function(){
 module.exports = FilterView
 
 /***/ },
-/* 3 */
+/* 2 */
 /***/ function(module, exports) {
 
 var HeaderView = function(headerElement){
@@ -247,6 +246,7 @@ var HeaderView = function(headerElement){
   this.headerElement = headerElement
   this.adventureItem = null
   this.wishlistItem = null
+  this.cyoItem = null
   this.render()
 }
 
@@ -279,11 +279,22 @@ HeaderView.prototype = {
     headerViewSeparator3.className = "header-view-item"
     headerViewSeparator3.innerHTML = " | "
 
+    this.cyoItem = document.createElement('div')
+    this.cyoItem.className = "header-view-item" 
+    this.cyoItem.innerHTML = "create Your Own"
+    this.cyoItem.style = "cursor: pointer"
+
+    var headerViewSeparator4 = document.createElement('div')
+    headerViewSeparator4.className = "header-view-item"
+    headerViewSeparator4.innerHTML = " | "
+
     headerWrapper.appendChild(headerViewSeparator1);
     headerWrapper.appendChild(this.adventureItem);
     headerWrapper.appendChild(headerViewSeparator2);
     headerWrapper.appendChild(this.wishlistItem);
     headerWrapper.appendChild(headerViewSeparator3);
+    headerWrapper.appendChild(this.cyoItem);
+    headerWrapper.appendChild(headerViewSeparator4);
 
     this.headerElement.appendChild(headerWrapper);
 
@@ -296,7 +307,7 @@ HeaderView.prototype = {
 module.exports = HeaderView
 
 /***/ },
-/* 4 */
+/* 3 */
 /***/ function(module, exports) {
 
 var ListScrollerView = function(listElement){
@@ -400,7 +411,7 @@ module.exports = ListScrollerView
 
 
 /***/ },
-/* 5 */
+/* 4 */
 /***/ function(module, exports) {
 
 var MapWrapper = function(container, coords, zoom){
@@ -419,9 +430,9 @@ var MapWrapper = function(container, coords, zoom){
            panel: document.getElementById('right-panel')
          });
   console.log(this.googleMap)
-         directionsDisplay.addListener('directions_changed', function() {
-           computeTotalDistance(directionsDisplay.getDirections());
-         });
+         // directionsDisplay.addListener('directions_changed', function() {
+         //   computeTotalDistance(directionsDisplay.getDirections());
+         // });
 
          this.displayRoute('Perth, WA', 'Sydney, NSW', directionsService,
             directionsDisplay);
@@ -489,18 +500,21 @@ module.exports = MapWrapper;
 
 
 /***/ },
-/* 6 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-var MapWrapper = __webpack_require__(5);
-var ListScrollerView = __webpack_require__(4)
+var MapWrapper = __webpack_require__(4);
+var ListScrollerView = __webpack_require__(3)
 var List = __webpack_require__(0);
-var FilterView = __webpack_require__(2)
-var HeaderView = __webpack_require__(3)
+var FilterView = __webpack_require__(1)
+var HeaderView = __webpack_require__(2)
+var CyoView = __webpack_require__(6)
 
 
 
 var app = function(){
+
+
 
   //load header_view
   var headerViewElement = document.querySelector('#header-view')
@@ -523,6 +537,7 @@ var app = function(){
 
   var adventureList = new List('http://localhost:3000/api/adventures')
   var wishList = new List('http://localhost:3000/api/wishlist')
+  var cyoView = new CyoView(listElement)
 
   headerView.adventureItem.addEventListener('click', function(){
     console.log('all adventures clicked')
@@ -540,6 +555,15 @@ var app = function(){
        listScrollerView.renderAdventures(adventures)
        //console.log(listElement.childNodes)
      })
+  })
+
+   headerView.cyoItem.addEventListener('click', function(){
+     console.log('CyoView clicked')
+
+     
+       cyoView.renderCYO()
+       //console.log(listElement.childNodes)
+     
   })
 
 
@@ -561,6 +585,38 @@ var app = function(){
 
 
 window.onload = app;
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+var CreateYourOwn = function(listElement){
+  this.listElement = listElement;
+}
+
+
+CreateYourOwn.prototype = {
+
+  renderCYO: function(){
+    this.clearList();
+
+    var start = document.createElement('div')
+    start.innerHTML = "Click Map to set start point the hit save button";
+    start.className = "CYO-element";
+    this.listElement.appendChild(start)
+
+  },
+
+
+
+  clearList: function(){
+    while (this.listElement.hasChildNodes()){
+      this.listElement.removeChild(this.listElement.lastChild)
+    }
+  }
+}
+
+module.exports = CreateYourOwn;
 
 /***/ }
 /******/ ]);
