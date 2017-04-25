@@ -35,12 +35,6 @@ AdventureQuery.prototype = {
     }.bind(this))
   },
 
-
-
-
-
-
-
   update: function(id, newData, onQueryFinished){
 
     MongoClient.connect(this.url, function(err, db){

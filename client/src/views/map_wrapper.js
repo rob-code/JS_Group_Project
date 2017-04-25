@@ -1,42 +1,66 @@
 var MapWrapper = function(container, coords, zoom){
 
+
   this.googleMap = new google.maps.Map(container, {center: coords,zoom: zoom});
   this.directionsService = new google.maps.DirectionsService;
   this.directionsDisplay = new google.maps.DirectionsRenderer({ draggable: true, map: this.googleMap});
+
+  this.markersArray = [];
 }
 
 
 
 MapWrapper.prototype = {
 
-  addMarker: function(coords, text){
-    var marker = new google.maps.Marker({
-      position: coords,
-      map: this.googleMap
-    })
-//    currentDirections.routes[0].legs[0].via_waypoint[]. 
-    // var infowindow = new google.maps.InfoWindow({
-    //   content: text
-    // })
-    // marker.onLoad = infowindow.open(this.googleMap,marker)
-    // marker.addListener('click', function(){
-    //   infowindow.open(this.googleMap,marker);
-    // })
+
+  clearMarkers: function(){
+
+    for (var i = 0; i < this.markersArray.length; i++){
+      this.markersArray[i].setMap(null)
+    }  
   },
 
-    showRoute1: function (origin, destination,waypoints, service, display, id,url) {
 
-      this.id = id
-      
-      service.route({
-        origin: origin,
-        destination: destination,
-        waypoints: waypoints,
-        travelMode: 'WALKING',
-        avoidTolls: true
-      }, function(response, status) {
-        if (status === 'OK') {
+  addMarker: function(adventure){
 
+
+
+
+
+    var marker = new google.maps.Marker({
+      position: adventure.startpoint,
+      map: this.googleMap
+    })
+
+    this.markersArray.push(marker); 
+
+    var infoWindow = new google.maps.InfoWindow({
+      content: adventure.name + "/n" + adventure.mode
+    });
+
+    marker.addListener('click', function() {
+      infoWindow.open(this.googleMap, marker);
+    });
+
+  },
+
+  showRoute1: function (origin, destination,waypoints, service, display, id, url) {
+
+    
+
+    this.id = id
+
+    service.route({
+      origin: origin,
+      destination: destination,
+      waypoints: waypoints,
+      travelMode: 'WALKING',
+      avoidTolls: true
+    }, function(response, status) {
+      if (status === 'OK') {
+
+         // this.changeView(1,origin)
+          this.clearMarkers();
           //// the route is displayed here
           this.directionsDisplay.setDirections(response);
 
@@ -47,55 +71,55 @@ MapWrapper.prototype = {
 
          // console.log(routeData1.via_waypoints);
 
-          this.directionsDisplay.addListener("directions_changed", function(){
+         this.directionsDisplay.addListener("directions_changed", function(){
 
-            console.log("directions changed - xmlhttprequest");
-            console.log(this.directionsDisplay.directions.routes[0].legs[0]);
+          console.log("directions changed - xmlhttprequest");
+          console.log(this.directionsDisplay.directions.routes[0].legs[0]);
 
             //// create object from directions
-          var routeData = {};
+            var routeData = {};
 
-          var routeDirections = this.directionsDisplay.directions.routes[0].legs[0]
+            var routeDirections = this.directionsDisplay.directions.routes[0].legs[0]
 
-          var routeWaypoints = [];
+            var routeWaypoints = [];
 
-          routeData.startpoint = {'lat': routeDirections.start_location.lat(), 'lng':routeDirections.start_location.lng()}
+            routeData.startpoint = {'lat': routeDirections.start_location.lat(), 'lng':routeDirections.start_location.lng()}
 
-          routeData.endpoint = {'lat': routeDirections.end_location.lat(), 'lng':routeDirections.end_location.lng()}
+            routeData.endpoint = {'lat': routeDirections.end_location.lat(), 'lng':routeDirections.end_location.lng()}
 
-          var viawp = routeDirections.via_waypoints
-          for(var i=0;i<viawp.length;i++){
-            routeWaypoints[i] = [viawp[i].lat(),viawp[i].lng()]
-          }
-          routeData.waypoints = routeWaypoints;
-               
-          var jsonString = JSON.stringify(routeData)
-          console.log(jsonString);
+            var viawp = routeDirections.via_waypoints
+            for(var i=0;i<viawp.length;i++){
+              routeWaypoints[i] = [viawp[i].lat(),viawp[i].lng()]
+            }
+            routeData.waypoints = routeWaypoints;
+
+            var jsonString = JSON.stringify(routeData)
+            console.log(jsonString);
           /////////////////////////// Update route
-             var request = new XMLHttpRequest();
-             request.open("PUT", url + this.id);
+          var request = new XMLHttpRequest();
+          request.open("PUT", url + this.id);
 
-             request.setRequestHeader("Content-Type", "application/json");
+          request.setRequestHeader("Content-Type", "application/json");
 
-             request.onload = function(){console.log("sending");};
+          request.onload = function(){console.log("sending");};
 
-             request.send(jsonString);
-           
+          request.send(jsonString);
+
 
            //////update end
 
-          }.bind(this))
+         }.bind(this))
 
 
-        } else {
-          alert('Could not display directions due to: ' + status);
-        }
-      }.bind(this));
-            
+       } else {
+        alert('Could not display directions due to: ' + status);
+      }
+    }.bind(this));
 
-    }
 
-  };
+  }
+
+};
 
 
 
