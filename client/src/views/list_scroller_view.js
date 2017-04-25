@@ -110,12 +110,33 @@ renderWishlist: function(adventures, callback){
       callback(adventure)
     }.bind(this))
 
+
+    var editAdventure = document.createElement('div')
+    editAdventure.innerHTML = "edit route";
+    editAdventure.className = "adventure-edit-route";
+
+    editAdventure.style = "cursor: pointer"
+    editAdventure.addEventListener('click', function(){
+      console.log("edit saved adventure db")
+    }.bind(this))
+
+    var removeAdventure = document.createElement('div')
+    removeAdventure.innerHTML = "remove route";
+    editAdventure.className = "adventure-remove-route";
+
+    removeAdventure.style = "cursor: pointer"
+    removeAdventure.addEventListener('click', function(){
+      console.log("remove adventure from wishlist db")
+    }.bind(this))
+
     scrollableContainer.appendChild(wrapper)
     wrapper.appendChild(name)
     wrapper.appendChild(description)
     wrapper.appendChild(routeModeRating)
     wrapper.appendChild(review)
     wrapper.appendChild(showRoute)
+    wrapper.appendChild(editAdventure)
+    wrapper.appendChild(removeAdventure)
 
   }.bind(this))
 },
