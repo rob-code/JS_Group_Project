@@ -54,12 +54,10 @@ ListScrollerView.prototype = {
       saveAdventure.style = "cursor: pointer"
       saveAdventure.addEventListener('click', function(){
                 
-        console.log(adventure)      
-        var newAdventure= {};
-        var jsonString = JSON.stringify(newAdventure)
+        var jsonString = JSON.stringify(adventure)
 
         var request = new XMLHttpRequest();
-        request.open("POST", "http://localhost:3000/wishlist");
+        request.open("POST", "http://localhost:3000/api/wishlist");
 
         request.setRequestHeader("Content-Type", "application/json");
 
