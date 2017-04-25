@@ -85,7 +85,7 @@ ListScrollerView.prototype = {
     }.bind(this))
   },
 
-renderWishlist: function(adventures, callback){
+renderWishlist: function(adventures,deleteCallback ,callback){
 
   this.clearNodes();
   
@@ -146,6 +146,15 @@ renderWishlist: function(adventures, callback){
 
     removeAdventure.style = "cursor: pointer"
     removeAdventure.addEventListener('click', function(){
+
+
+      deleteCallback(adventure)
+      // var xmlHttp = new XMLHttpRequest();
+      // xmlHttp.open( "DELETE", 'http://localhost:3000/api/wishlist/'+ adventure._id, false );
+      // xmlHttp.send( null );
+      
+
+
       console.log("remove adventure from wishlist db")
     }.bind(this))
 
