@@ -38,9 +38,12 @@ ListScrollerView.prototype = {
       review.innerHTML = adventure.review;
       review.className = "adventure-review";
 
+      var adventureRouteWrapper = document.createElement('div')
+      adventureRouteWrapper.className = "adventure-route-wrapper";
+
       var showRoute = document.createElement('div')
       showRoute.innerHTML = "show route";
-      showRoute.className = "adventure-show-route";
+      showRoute.className = "adventure-route-action";
 
       showRoute.style = "cursor: pointer"
       showRoute.addEventListener('click', function(){    
@@ -49,20 +52,22 @@ ListScrollerView.prototype = {
 
       var saveAdventure = document.createElement('div')
       saveAdventure.innerHTML = "save route";
-      saveAdventure.className = "adventure-save-route";
+      saveAdventure.className = "adventure-route-action";
 
       saveAdventure.style = "cursor: pointer"
       saveAdventure.addEventListener('click', function(){
         console.log("save adventure to the wishlist db")
       }.bind(this))
 
+      adventureRouteWrapper.appendChild(showRoute)
+      adventureRouteWrapper.appendChild(saveAdventure)
+
       scrollableContainer.appendChild(wrapper)
       wrapper.appendChild(name)
       wrapper.appendChild(description)
       wrapper.appendChild(routeModeRating)
       wrapper.appendChild(review)
-      wrapper.appendChild(showRoute)
-      wrapper.appendChild(saveAdventure)
+      wrapper.appendChild(adventureRouteWrapper)
 
     }.bind(this))
   },
@@ -101,19 +106,21 @@ renderWishlist: function(adventures, callback){
     review.innerHTML = adventure.review;
     review.className = "adventure-review";
 
+    var adventureRouteWrapper = document.createElement('div')
+    adventureRouteWrapper.className = "adventure-route-wrapper";
+
     var showRoute = document.createElement('div')
     showRoute.innerHTML = "show route";
-    showRoute.className = "adventure-show-route";
+    showRoute.className = "adventure-route-action";
 
     showRoute.style = "cursor: pointer"
     showRoute.addEventListener('click', function(){
       callback(adventure)
     }.bind(this))
 
-
     var editAdventure = document.createElement('div')
     editAdventure.innerHTML = "edit route";
-    editAdventure.className = "adventure-edit-route";
+    editAdventure.className = "adventure-route-action";
 
     editAdventure.style = "cursor: pointer"
     editAdventure.addEventListener('click', function(){
@@ -122,21 +129,25 @@ renderWishlist: function(adventures, callback){
 
     var removeAdventure = document.createElement('div')
     removeAdventure.innerHTML = "remove route";
-    editAdventure.className = "adventure-remove-route";
+    removeAdventure.className = "adventure-route-action";
 
     removeAdventure.style = "cursor: pointer"
     removeAdventure.addEventListener('click', function(){
       console.log("remove adventure from wishlist db")
     }.bind(this))
 
+
+    adventureRouteWrapper.appendChild(editAdventure)
+    adventureRouteWrapper.appendChild(showRoute)
+    adventureRouteWrapper.appendChild(removeAdventure)
+
+
     scrollableContainer.appendChild(wrapper)
     wrapper.appendChild(name)
     wrapper.appendChild(description)
     wrapper.appendChild(routeModeRating)
     wrapper.appendChild(review)
-    wrapper.appendChild(showRoute)
-    wrapper.appendChild(editAdventure)
-    wrapper.appendChild(removeAdventure)
+    wrapper.appendChild(adventureRouteWrapper)
 
   }.bind(this))
 },
