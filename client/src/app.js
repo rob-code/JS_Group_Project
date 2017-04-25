@@ -75,8 +75,8 @@ var app = function(){
   headerView.adventureItem.addEventListener('click', function(){
 
     adventureList.getData(function(adventures){
-     
-    map.googleMap.setZoom(10);
+      map.googleMap.setZoom(10);
+      map.resetMap()
       map.clearMarkers();
       populateMarkers(adventures)
       //add map.method for rendering start points
@@ -94,6 +94,8 @@ var app = function(){
 
 
      wishList.getData(function(adventures){
+      
+      map.resetMap()
       map.googleMap.setZoom(10);
       map.clearMarkers();
       //add map.method for rendering start points

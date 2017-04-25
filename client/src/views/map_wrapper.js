@@ -44,9 +44,14 @@ MapWrapper.prototype = {
 
   },
 
+  resetMap: function () {
+    this.directionsDisplay.setMap(null);
+    //this.directionsDisplay = null;
+  },
+
+
   showRoute1: function (origin, destination,waypoints, service, display, id, url) {
 
-    
 
     this.id = id
 
@@ -62,6 +67,7 @@ MapWrapper.prototype = {
          // this.changeView(1,origin)
           this.clearMarkers();
           //// the route is displayed here
+          this.directionsDisplay.setMap(this.googleMap);
           this.directionsDisplay.setDirections(response);
 
           ///////////response is the same as the line under
