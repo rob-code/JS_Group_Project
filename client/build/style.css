@@ -136,9 +136,7 @@
   }
 
   .filter-input-clearbutton{
-    /*border: none*/
-    height: 60px;
-  }
+    }
 
 
   /**************** styles for list_scroller_view ***************/

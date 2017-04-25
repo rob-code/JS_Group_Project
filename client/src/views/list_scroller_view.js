@@ -4,7 +4,7 @@ var ListScrollerView = function(listElement){
 
 ListScrollerView.prototype = {
 
-  renderAdventures: function(adventures,callback){
+  renderAdventures: function(adventures, showCallback){
 
     this.clearNodes()
 
@@ -43,14 +43,18 @@ ListScrollerView.prototype = {
       showRoute.className = "adventure-show-route";
 
       showRoute.style = "cursor: pointer"
-      showRoute.addEventListener('click', function(){
-        ////refresh data  
-    
-        callback(adventure)
-
+      showRoute.addEventListener('click', function(){    
+        showCallback(adventure)
       }.bind(this))
 
-      
+      var saveAdventure = document.createElement('div')
+      saveAdventure.innerHTML = "save route";
+      saveAdventure.className = "adventure-save-route";
+
+      saveAdventure.style = "cursor: pointer"
+      saveAdventure.addEventListener('click', function(){
+        console.log("save adventure to the wishlist db")
+      }.bind(this))
 
       scrollableContainer.appendChild(wrapper)
       wrapper.appendChild(name)
@@ -58,7 +62,8 @@ ListScrollerView.prototype = {
       wrapper.appendChild(routeModeRating)
       wrapper.appendChild(review)
       wrapper.appendChild(showRoute)
- 
+      wrapper.appendChild(saveAdventure)
+
     }.bind(this))
   },
 
