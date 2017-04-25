@@ -53,7 +53,22 @@ ListScrollerView.prototype = {
 
       saveAdventure.style = "cursor: pointer"
       saveAdventure.addEventListener('click', function(){
-        console.log("save adventure to the wishlist db")
+                
+        console.log(adventure)      
+        var newAdventure= {};
+        var jsonString = JSON.stringify(newAdventure)
+
+        var request = new XMLHttpRequest();
+        request.open("POST", "http://localhost:3000/wishlist");
+
+        request.setRequestHeader("Content-Type", "application/json");
+
+        request.onload = function(){
+
+          console.log("sending");
+        };
+
+       request.send(jsonString);
       }.bind(this))
 
       scrollableContainer.appendChild(wrapper)
