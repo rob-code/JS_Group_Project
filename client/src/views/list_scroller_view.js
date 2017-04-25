@@ -1,5 +1,6 @@
 var ListScrollerView = function(listElement){
   this.listElement = listElement;
+  this.unlocked = false;
 }
 
 ListScrollerView.prototype = {
@@ -97,11 +98,12 @@ renderWishlist: function(adventures,deleteCallback ,callback){
   var scrollableContainer = document.createElement('div')
   scrollableContainer.className = "adventure-scrollable-container";
   this.listElement.appendChild(scrollableContainer)
-
-  adventures.forEach(function(adventure){
+  /////////////////////////////////////////////////////////////////////////
+  adventures.forEach(function(adventure, index){
 
     var wrapper = document.createElement('div')
     wrapper.className = "adventure-wrapper";
+    
 
     var name = document.createElement('div')
     name.innerHTML = adventure.name;
@@ -133,13 +135,41 @@ renderWishlist: function(adventures,deleteCallback ,callback){
 
     var editAdventure = document.createElement('div')
     editAdventure.innerHTML = "edit route";
-    editAdventure.className = "adventure-route-action";
 
+    editAdventure.className = "adventure-route-action";
     editAdventure.style = "cursor: pointer"
     editAdventure.addEventListener('click', function(){
-      console.log("edit saved adventure db")
-    }.bind(this))
 
+
+      var editWrapper = document.createElement('div')
+      wrapper.className = "adventure-wrapper";
+      
+
+      var editName = document.createElement('div')
+      name.innerHTML = adventure.name;
+      name.className = "adventure-name";
+
+      var editDescription = document.createElement('div')
+      description.innerHTML = "Description : " + adventure.description;
+      description.className = "adventure-description";
+
+      var editRouteModeRating = document.createElement('div')
+      routeModeRating.innerHTML = "Route Mode : " + adventure.mode + ".  Rating : " + adventure.rating;
+      routeModeRating.className = "adventure-mode-rating";
+
+      var editReview = document.createElement('div')
+      review.innerHTML = adventure.review;
+      review.className = "adventure-review";
+
+
+      scrollableContainer.appendChild(editWrapper)
+      editWrapper.appendChild(editName)
+      editWrapper.appendChild(editDescription)
+      editWrapper.appendChild(editRouteModeRating)
+      editWrapper.appendChild(editReview)
+      
+    })
+////
     var removeAdventure = document.createElement('div')
     removeAdventure.innerHTML = "remove route";
     removeAdventure.className = "adventure-route-action";
@@ -172,6 +202,7 @@ renderWishlist: function(adventures,deleteCallback ,callback){
     wrapper.appendChild(adventureRouteWrapper)
 
   }.bind(this))
+  /////////////////////////////foreach ends/////////////////////////////////////
 },
 
 clearNodes: function(){
