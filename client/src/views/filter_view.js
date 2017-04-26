@@ -142,10 +142,8 @@ render: function(callback){
       query.mode = 'walking'
     }
 
-    //this doesnt work properly yet!!
     if(this.cycle.checked && this.walk.checked) {
-      query.rating = 3
-      //query.$or = "[{mode: 'walking'},{mode: 'cycling'}]"
+      query.$or = "[{mode: $all 'walking'},{mode: $all 'cycling'}]"
     }
 
 

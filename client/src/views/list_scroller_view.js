@@ -23,8 +23,6 @@ ListScrollerView.prototype = {
     scrollableContainer.className = "adventure-scrollable-container";
     this.listElement.appendChild(scrollableContainer)
 
-    console.log(adventures)
-
     this.adventures.forEach(function(adventure){
 
       var wrapper = document.createElement('div')

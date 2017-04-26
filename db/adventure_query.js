@@ -16,6 +16,7 @@ AdventureQuery.prototype = {
         var collection = db.collection(this.collectionName);
         collection.find().toArray(function(err, docs){
           onQueryFinished(docs);
+          db.close();
         })
       }
     }.bind(this))
@@ -29,6 +30,7 @@ AdventureQuery.prototype = {
 
         collection.find(params).toArray(function(err, docs){
           onQueryFinished(docs);
+          db.close();
         })
       }
     }.bind(this))
@@ -57,6 +59,7 @@ AdventureQuery.prototype = {
         collection.updateOne({ _id: ObjectID(id) }, { $set: newData } );
         collection.find().toArray(function(err, docs){
           onQueryFinished(docs);
+          db.close();
         })
       }
     }.bind(this))
@@ -70,6 +73,7 @@ AdventureQuery.prototype = {
         collection.insert(newTrip);
         collection.find().toArray(function(err,docs){
           onQueryFinished(docs);
+          db.close();
         })
       }
     }.bind(this));
@@ -83,6 +87,7 @@ AdventureQuery.prototype = {
         collection.remove( { _id:ObjectID(id) } )
         collection.find().toArray(function(err, docs){
           onQueryFinished(docs);
+          db.close();
         })
       }
     }.bind(this))
