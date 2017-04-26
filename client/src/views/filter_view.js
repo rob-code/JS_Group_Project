@@ -2,13 +2,12 @@ var FilterView = function(filterElement){
 
   this.filterElement = filterElement;
 
-  this.render();
 }
 
 
 FilterView.prototype = {
 
-render: function(){
+render: function(callback){
 
   var title = document.createElement('div')
   title.innerHTML = "Search ";
@@ -61,56 +60,56 @@ render: function(){
   walkRow.appendChild(walkCheckBox)
   fieldSet.appendChild(walkRow)
 
-  //avoid roads row
-  var roadsRow = document.createElement('div')
-  roadsRow.className = 'filter-form-row'
+  // //avoid roads row
+  // var roadsRow = document.createElement('div')
+  // roadsRow.className = 'filter-form-row'
 
-  var roadsCheckBox = document.createElement('input')
-  roadsCheckBox.type = "checkbox";
-  roadsCheckBox.name = "avoidRoads";
-  roadsCheckBox.className = "filter-input"
+  // var roadsCheckBox = document.createElement('input')
+  // roadsCheckBox.type = "checkbox";
+  // roadsCheckBox.name = "avoidRoads";
+  // roadsCheckBox.className = "filter-input"
 
-  var roadsLabel = document.createElement('label')
-  roadsLabel.innerHTML = "Avoid roads"
-  roadsLabel.className = "filter-label"
+  // var roadsLabel = document.createElement('label')
+  // roadsLabel.innerHTML = "Avoid roads"
+  // roadsLabel.className = "filter-label"
 
-  roadsRow.appendChild(roadsLabel)
-  roadsRow.appendChild(roadsCheckBox)
-  fieldSet.appendChild(roadsRow)
+  // roadsRow.appendChild(roadsLabel)
+  // roadsRow.appendChild(roadsCheckBox)
+  // fieldSet.appendChild(roadsRow)
 
-  //location
-  var locationRow = document.createElement('div')
-  locationRow.className = 'filter-form-row-textfield'
+  //name
+  // var nameRow = document.createElement('div')
+  // nameRow.className = 'filter-form-row-textfield'
 
-  var locationLabel = document.createElement('label')
-  locationLabel.innerHTML = "Location"
-  locationLabel.className = "filter-label"
+  // var nameLabel = document.createElement('label')
+  // nameLabel.innerHTML = "Name"
+  // nameLabel.className = "filter-label"
 
-  var locationInput = document.createElement('input')
-  locationInput.type = "text";
-  locationInput.name = "location";
-  locationInput.className = "filter-input-textfield"
+  // var nameInput = document.createElement('input')
+  // nameInput.type = "text";
+  // nameInput.name = "name";
+  // nameInput.className = "filter-input-textfield"
 
-  locationRow.appendChild(locationLabel)
-  locationRow.appendChild(locationInput)
-  fieldSet.appendChild(locationRow)
+  // nameRow.appendChild(nameLabel)
+  // nameRow.appendChild(nameInput)
+  // fieldSet.appendChild(nameRow)
 
-  //distance
-  var distanceRow = document.createElement('div')
-  distanceRow.className = 'filter-form-row-textfield'
+  // //description
+  // var descriptionRow = document.createElement('div')
+  // descriptionRow.className = 'filter-form-row-textfield'
 
-  var distanceLabel = document.createElement('label')
-  distanceLabel.innerHTML = "Distance (kms)"
-  distanceLabel.className = "filter-label"
+  // var descriptionLabel = document.createElement('label')
+  // descriptionLabel.innerHTML = "Description"
+  // descriptionLabel.className = "filter-label"
 
-  var distanceInput = document.createElement('input')
-  distanceInput.type = "text";
-  distanceInput.name = "distance";
-  distanceInput.className = "filter-input-textfield"
+  // var descriptionInput = document.createElement('input')
+  // descriptionInput.type = "text";
+  // descriptionInput.name = "description";
+  // descriptionInput.className = "filter-input-textfield"
 
-  distanceRow.appendChild(distanceLabel)
-  distanceRow.appendChild(distanceInput)
-  fieldSet.appendChild(distanceRow)
+  // descriptionRow.appendChild(descriptionLabel)
+  // descriptionRow.appendChild(descriptionInput)
+  // fieldSet.appendChild(descriptionRow)
 
 
   //clear search button
@@ -135,58 +134,49 @@ render: function(){
 
     var query = {};
 
-    if(this.cycle.checked) {
-      query.cycle = this.cycle.checked
+    if(this.cycle.checked && !this.walk.checked) {
+      query.mode = 'cycling'
     }
 
-    if(this.walk.checked) {
-      query.walk = this.walk.checked
+    if(!this.cycle.checked && this.walk.checked) {
+      query.mode = 'walking'
     }
 
-    if(this.avoidRoads.checked) {
-      query.avoidRoads = this.avoidRoads.checked
+    //this doesnt work properly yet!!
+    if(this.cycle.checked && this.walk.checked) {
+      query.rating = 3
+      //query.$or = "[{mode: 'walking'},{mode: 'cycling'}]"
     }
 
-    if(this.location.value) {
-      query.location = this.location.value
-    }
+
+    // if(this.name.value) {
+    //   query.name = this.name.value
+    // }
 
 
-    if(this.distance.value) {
-      query.distance = this.distance.value
-    }
+    // if(this.description.value) {
+    //   query.description = this.description.value
+    // }
 
+    console.log(query)
 
   //send query as the payload of an XMLHTTPRequest post
 
 
-  //   var jsonString = JSON.stringify(query)
-  //   var request = new XMLHttpRequest();
-  //   request.open("GET", "http://localhost:3000/api/adventures/filter");
-  //  request.setRequestHeader("Content-Type", "application/json");
-  //   request.onload = function(){
-  //     console.log("sending");
-  //   };
+    var jsonString = JSON.stringify(query)
+    var request = new XMLHttpRequest();
+    request.open("POST", "http://localhost:3000/api/adventures/filter");
+    request.setRequestHeader("Content-Type", "application/json");
+    request.onload = function(){
+      var array = JSON.parse(request.responseText) 
+      callback(array);
+//      console.log("we're back...", request.responseText );
+    };
 
-  //  request.send(jsonString);
-  // })
+   request.send(jsonString);
+  })
 
-  var request = new XMLHttpRequest();  
-    request.open("GET", "http://localhost:3000/api/adventures/filter/" + query);
-  
-    request.onload = function(){    
-      if (request.status === 200){
-          var jsonString = request.responseText; 
-          this.itemList = JSON.parse(jsonString);
-          console.log(this.itemList)
-
-          //callback(this.itemList);
-        }
-      }.bind(this); 
-      
-      request.send();  
-
-})
+//   
 
   submitRow.appendChild(submitButton)
   fieldSet.appendChild(submitRow)

@@ -27,7 +27,7 @@ AdventureQuery.prototype = {
       if (db){
         var collection = db.collection(this.collectionName);
 
-        collection.find({params}).toArray(function(err, docs){
+        collection.find(params).toArray(function(err, docs){
           onQueryFinished(docs);
         })
       }

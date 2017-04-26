@@ -6,6 +6,13 @@ var HeaderView = require('./views/header_view')
 
 var app = function(){
 
+  //load list_scroller_view of adventures
+  var listElement = document.querySelector('#list-view')
+  var listScrollerView = new ListScrollerView(listElement)
+
+  var adventureList = new List('http://localhost:3000/api/adventures')
+  var wishList = new List('http://localhost:3000/api/wishlist')
+
   //load header_view
   var headerViewElement = document.querySelector('#header-view')
   var headerView = new HeaderView(headerViewElement)
@@ -13,6 +20,27 @@ var app = function(){
   //load filter_view
   var filterViewElement = document.querySelector('#filter-view')
   var filterView = new FilterView(filterViewElement)
+  filterView.render(function(adventures){
+    console.log("adventures:",adventures[0])
+   
+    listScrollerView.renderAdventures(adventures,function(adventure){
+
+        adventureList.getDataById(adventure._id,function(item){         
+        renderListRoute(item,'http://localhost:3000/api/adventures/' );
+    });
+   
+
+
+    })
+
+
+
+
+
+
+
+
+  })
   
   ///////////////////////////////////////////////////////
   //////////////////////////MAP/////////////////////////////
@@ -62,12 +90,7 @@ var app = function(){
   ////////////////////MAP END/////////////////////
   /////////////////////////////////////////////////////////
 
-  //load list_scroller_view of adventures
-  var listElement = document.querySelector('#list-view')
-  var listScrollerView = new ListScrollerView(listElement)
 
-  var adventureList = new List('http://localhost:3000/api/adventures')
-  var wishList = new List('http://localhost:3000/api/wishlist')
 
 
 
@@ -86,6 +109,7 @@ var app = function(){
           renderListRoute(item,'http://localhost:3000/api/adventures/' );
       });
       })
+
     })
   });
 
