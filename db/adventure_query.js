@@ -21,6 +21,19 @@ AdventureQuery.prototype = {
     }.bind(this))
   },
 
+  filter: function(params, onQueryFinished){
+    MongoClient.connect(this.url, function(err, db){
+
+      if (db){
+        var collection = db.collection(this.collectionName);
+
+        collection.find({params}).toArray(function(err, docs){
+          onQueryFinished(docs);
+        })
+      }
+    }.bind(this))
+  },
+
   getById: function(id,onQueryFinished){
   
     MongoClient.connect(this.url, function(err, db){

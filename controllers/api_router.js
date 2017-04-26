@@ -19,6 +19,22 @@ apiRouter.get('/:id', function(req,res){
   })
 })
 
+//SHOW TRIPS BY FILTER CRITERIA 
+apiRouter.get('/filter/:object', function(req,res){
+
+  console.log(req.params)
+
+
+  adventureQuery.filter(req.params,function(docs){
+  
+  console.log(docs)
+  
+    res.json(docs)
+  })
+})
+
+
+
 //UPDATE TRIP BY ID - OK
 apiRouter.put('/:id', function(req,res){
   adventureQuery.update(req.params.id, req.body, function(docs){
