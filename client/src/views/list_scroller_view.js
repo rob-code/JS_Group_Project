@@ -196,8 +196,11 @@ clearNodes: function(){
   renderEditView: function(adventure){
     this.clearNodes()
 
-    console.log(adventure)
-    console.log(adventure.name)
+    var title = document.createElement('div')
+    title.innerHTML = "Edit adventure";
+    title.className = "adventure-list-title";
+    this.listElement.appendChild(title)
+
 
     var scrollableContainer = document.createElement('div')
     scrollableContainer.className = "adventure-scrollable-container";
@@ -207,13 +210,14 @@ clearNodes: function(){
     editWrapper.label = ""
     editWrapper.setAttribute('method','PUT')
     editWrapper.setAttribute('action','submit')
-    editWrapper.className = "edit-adventure-wrapper";
+    editWrapper.className = "adventure-wrapper";
 
     var editNameWrapper = document.createElement('div')
+    editNameWrapper.className = "edit-item-wrapper"
 
     var editNameLabel = document.createElement('label');
     editNameLabel.innerText = "Name: "
-    editNameLabel.className = "edit-label-name"
+    editNameLabel.className = "edit-label"
     editNameLabel.htmlFor = 'edit-adventure-name'
     
     var editName = document.createElement('input')
@@ -221,49 +225,50 @@ clearNodes: function(){
     editName.value = adventure.name
     editName.type = "text";
     editName.name = 'name'
-    editName.id = "edit-adventure-name";
+    editName.className = "edit-input";
 
     editNameWrapper.appendChild(editNameLabel);
     editNameWrapper.appendChild(editName);
 
-    var editDiscriptionWrapper = document.createElement('div')
+    var editDescriptionWrapper = document.createElement('div')
+    editDescriptionWrapper.className = "edit-item-wrapper"
 
     var editDescription = document.createElement('input')
     editDescription.value = adventure.description;
-    editDescription.type = "text";
+    editDescription.type = "text"
     editDescription.name = "description"
-    editDescription.id = "edit-adventure-description";
+    editDescription.className = "edit-input";
 
     var editDescriptionLabel = document.createElement('label');
     editDescriptionLabel.innerText = "Discription: "
-    editDescriptionLabel.id = "edit-label-discription" 
+    editDescriptionLabel.className = "edit-label" 
     editDescriptionLabel.htmlFor = "edit-adventure-description"
 
-    editDiscriptionWrapper.appendChild(editDescriptionLabel);
-    editDiscriptionWrapper.appendChild(editDescription);
+    editDescriptionWrapper.appendChild(editDescriptionLabel);
+    editDescriptionWrapper.appendChild(editDescription);
 
     var editRouteRatingWrapper = document.createElement('div')
-    editRouteRatingWrapper.id = 'edit-route-rating-wrapper'
+    editRouteRatingWrapper.className = 'edit-item-wrapper'
 
     var editRouteRatingLabel = document.createElement('label')
     editRouteRatingLabel.innerText = "Rating: "
-    editRouteRatingLabel.id = "edit-route-rating-label: "
+    editRouteRatingLabel.className = "edit-label"
     editRouteRatingLabel.htmlFor = "edit-adventure-route-rating"
 
     var editRouteRating = document.createElement('input')
     editRouteRating.type = "number";
     editRouteRating.value = adventure.rating
     editRouteRating.name = "rating"
-    editRouteRating.id = "edit-adventure-route-rating";
+    editRouteRating.className = "edit-input";
 
     editRouteRatingWrapper.appendChild(editRouteRatingLabel);
     editRouteRatingWrapper.appendChild(editRouteRating);
 
     var editModeWrapper = document.createElement('div');
-    editModeWrapper.id = 'edit-mode-wrapper'
+    editModeWrapper.className = 'edit-item-wrapper'
 
     var editModeLabel = document.createElement('label')
-    editModeLabel.id = 'edit-mode-label'
+    editModeLabel.className = 'edit-label'
     editModeLabel.innerText = "Mode: "
     editModeLabel.htmlFor = "edit-adventure-mode"
 
@@ -271,16 +276,16 @@ clearNodes: function(){
     editMode.type = "text";
     editMode.value = adventure.mode;
     editMode.name ="mode"
-    editMode.id = "edit-adventure-mode";
+    editMode.className = "edit-input";
 
     editModeWrapper.appendChild(editModeLabel);
     editModeWrapper.appendChild(editMode)
 
     var editReviewWrapper = document.createElement('div')
-    editReviewWrapper.id = 'edit-review-wrapper'
+    editReviewWrapper.className = 'edit-item-wrapper'
 
     var editReviewLabel = document.createElement('label')
-    editReviewLabel.id = 'edit-review-label'
+    editReviewLabel.className = 'edit-label'
     editReviewLabel.htmlFor = 'edit-adventure-review'
     editReviewLabel.innerText = "Review: "
 
@@ -288,24 +293,28 @@ clearNodes: function(){
     editReview.type = "text";
     editReview.value = adventure.review
     editReview.name = 'review'
-    editReview.id = "edit-adventure-review";
+    editReview.className = "edit-input";
 
     editReviewWrapper.appendChild(editReviewLabel);
     editReviewWrapper.appendChild(editReview);
 
+    var submitButtonWrapper = document.createElement('div')
+    submitButtonWrapper.className = "edit-item-wrapper"
+
     var submit = document.createElement("input");
     submit.type = "submit";
     submit.value = "Submit";
-    submit.id ="submit"
+    submit.className ="edit-submit-button"
 
-    
+    submitButtonWrapper.appendChild(submit)
+
     scrollableContainer.appendChild(editWrapper)
     editWrapper.appendChild(editNameWrapper)
-    editWrapper.appendChild(editDiscriptionWrapper)
+    editWrapper.appendChild(editDescriptionWrapper)
     editWrapper.appendChild(editRouteRatingWrapper)
     editWrapper.appendChild(editModeWrapper)
     editWrapper.appendChild(editReviewWrapper)
-    editWrapper.appendChild(submit)
+    editWrapper.appendChild(submitButtonWrapper)
 
     var editedAdventure = {};
 

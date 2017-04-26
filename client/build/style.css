@@ -207,3 +207,24 @@
   display: inline;
 }
 
+.edit-item-wrapper{
+  padding-top: 10px;
+}
+
+.edit-label{
+  padding-left: 5px;
+  width: 50%;
+}
+
+.edit-input{
+  float: right;
+  margin-right: 20px;
+  width: 60%;
+}
+
+.edit-submit-button{
+  margin: auto;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
