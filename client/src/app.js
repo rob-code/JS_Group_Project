@@ -91,20 +91,32 @@ var app = function(){
 
 
    headerView.wishlistItem.addEventListener('click', function(){
-
-
      wishList.getData(function(adventures){
       
-      map.resetMap()
-      map.googleMap.setZoom(10);
-      map.clearMarkers();
-      //add map.method for rendering start points
-      populateMarkers(adventures)
+       map.resetMap()
+       map.googleMap.setZoom(10);
+       map.clearMarkers();
+       //add map.method for rendering start points
+       populateMarkers(adventures)
 
-       listScrollerView.renderWishlist(adventures, function(adventure){
+       listScrollerView.renderWishlist(
+        //arg1
+        adventures, 
+        //arg2
+        function(adventure){
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "DELETE", 'http://localhost:3000/api/wishlist/'+ adventure._id, false );
+        xmlHttp.send( null );
+        ///// 
+        var defaultListEvent = new Event('click');
+        headerView.wishlistItem.dispatchEvent(defaultListEvent);
+       },
+       //arg3
+        function(adventure){
             wishList.getDataById(adventure._id,function(item){         
             renderListRoute(item,'http://localhost:3000/api/wishlist/');
        });
+
       })
      })
   });
