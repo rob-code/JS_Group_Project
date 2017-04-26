@@ -1,7 +1,7 @@
-var MapWrapper = function(container, coords, zoom){
+var MapWrapper = function(container, coords, zoom, styles){
 
 
-  this.googleMap = new google.maps.Map(container, {center: coords,zoom: zoom});
+  this.googleMap = new google.maps.Map(container, {center: coords, zoom: zoom, styles: styles, mapTypeId: 'terrain'});
   this.directionsService = new google.maps.DirectionsService;
   this.directionsDisplay = new google.maps.DirectionsRenderer({ draggable: true, map: this.googleMap});
 
