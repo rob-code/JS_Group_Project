@@ -13,7 +13,6 @@ wishlistRouter.get('/', function(req, res){
 })
 
 
-
 //SHOW TRIP BY ID
 wishlistRouter.get('/:id', function(req,res){
   adventureQuery.getById(req.params.id,function(docs){

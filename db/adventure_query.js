@@ -49,11 +49,12 @@ AdventureQuery.prototype = {
   },
 
   update: function(id, newData, onQueryFinished){
+    console.log("newData:", newData);
 
     MongoClient.connect(this.url, function(err, db){
       if (db){
         var collection = db.collection(this.collectionName);  
-        collection.updateOne({ _id:ObjectID(id) }, { $set: newData } );
+        collection.updateOne({ _id: ObjectID(id) }, { $set: newData } );
         collection.find().toArray(function(err, docs){
           onQueryFinished(docs);
         })
