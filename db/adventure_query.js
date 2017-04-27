@@ -28,6 +28,10 @@ AdventureQuery.prototype = {
       if (db){
         var collection = db.collection(this.collectionName);
 
+        console.log(params)
+
+        //{"name" : /.*eorge*/}
+
         collection.find(params).toArray(function(err, docs){
           onQueryFinished(docs);
           db.close();

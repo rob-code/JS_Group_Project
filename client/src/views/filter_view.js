@@ -78,38 +78,38 @@ render: function(callback){
   // fieldSet.appendChild(roadsRow)
 
   //name
-  // var nameRow = document.createElement('div')
-  // nameRow.className = 'filter-form-row-textfield'
+  var nameRow = document.createElement('div')
+  nameRow.className = 'filter-form-row-textfield'
 
-  // var nameLabel = document.createElement('label')
-  // nameLabel.innerHTML = "Name"
-  // nameLabel.className = "filter-label"
+  var nameLabel = document.createElement('label')
+  nameLabel.innerHTML = "Name"
+  nameLabel.className = "filter-label"
 
-  // var nameInput = document.createElement('input')
-  // nameInput.type = "text";
-  // nameInput.name = "name";
-  // nameInput.className = "filter-input-textfield"
+  var nameInput = document.createElement('input')
+  nameInput.type = "text";
+  nameInput.name = "name";
+  nameInput.className = "filter-input-textfield"
 
-  // nameRow.appendChild(nameLabel)
-  // nameRow.appendChild(nameInput)
-  // fieldSet.appendChild(nameRow)
+  nameRow.appendChild(nameLabel)
+  nameRow.appendChild(nameInput)
+  fieldSet.appendChild(nameRow)
 
   // //description
-  // var descriptionRow = document.createElement('div')
-  // descriptionRow.className = 'filter-form-row-textfield'
+  var descriptionRow = document.createElement('div')
+  descriptionRow.className = 'filter-form-row-textfield'
 
-  // var descriptionLabel = document.createElement('label')
-  // descriptionLabel.innerHTML = "Description"
-  // descriptionLabel.className = "filter-label"
+  var descriptionLabel = document.createElement('label')
+  descriptionLabel.innerHTML = "Description"
+  descriptionLabel.className = "filter-label"
 
-  // var descriptionInput = document.createElement('input')
-  // descriptionInput.type = "text";
-  // descriptionInput.name = "description";
-  // descriptionInput.className = "filter-input-textfield"
+  var descriptionInput = document.createElement('input')
+  descriptionInput.type = "text";
+  descriptionInput.name = "description";
+  descriptionInput.className = "filter-input-textfield"
 
-  // descriptionRow.appendChild(descriptionLabel)
-  // descriptionRow.appendChild(descriptionInput)
-  // fieldSet.appendChild(descriptionRow)
+  descriptionRow.appendChild(descriptionLabel)
+  descriptionRow.appendChild(descriptionInput)
+  fieldSet.appendChild(descriptionRow)
 
 
   //clear search button
@@ -146,11 +146,29 @@ render: function(callback){
       query.$or = "[{mode: $all 'walking'},{mode: $all 'cycling'}]"
     }
 
+    if(this.name.value) {
 
-    // if(this.name.value) {
-    //   query.name = this.name.value
-    // }
+//      query.name = this.name.value
+//      query.name = "{'name' : {$regex : '.*son.*'}}"    
 
+   // query.name = "{name : {$regex : '.*" + this.name.value + ".*'}}"    
+
+
+
+   query.name = "'$regex' : '" + this.name.value + "'" 
+
+    
+      // {name: "{$regex : /[eorge]/}"}
+      // {"name" : /.*eorge*/}
+
+
+      // //doesnt work
+      //  var regex = RegExp('.*' + this.name.value + '*')
+      //  query.name = regex
+
+
+
+    }
 
     // if(this.description.value) {
     //   query.description = this.description.value
